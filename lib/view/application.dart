@@ -3,6 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
 import 'package:retrobrew/view/feed.dart';
+import 'package:retrobrew/view/my_groups.dart';
 import 'package:retrobrew/view/profile.dart';
 
 
@@ -26,6 +27,11 @@ class _ApplicationState extends State<Application> {
     Colors.teal
   ];
 
+  List<String> appBarTitle = [
+    "Feeds",
+    "Profile"
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -34,9 +40,21 @@ class _ApplicationState extends State<Application> {
   Widget navigate() {
     if(selectedIndex == 3) {
       return const Profile();
+    }else if(selectedIndex == 1){
+      return const MyGroups();
     }
 
     return Feed();
+  }
+
+  String getTitle() {
+    if(selectedIndex == 3) {
+      return "Profile";
+    }else if(selectedIndex == 1) {
+      return "My groups";
+    }
+
+    return "Feeds";
   }
 
   @override
@@ -49,7 +67,7 @@ class _ApplicationState extends State<Application> {
         extendBody: true,
         appBar: AppBar(
           title: Text(
-            'Feeds',
+            getTitle()
           ),
         ),
         body: PageView.builder(
