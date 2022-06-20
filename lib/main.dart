@@ -3,6 +3,7 @@ import 'package:retrobrew/view/application.dart';
 import 'package:retrobrew/view/feed.dart';
 
 import 'view/login.dart';
+import 'view/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());

@@ -29,7 +29,6 @@ class BlockPost extends StatelessWidget {
                       width: double.infinity,
                       child: Text(name,
                           textAlign: TextAlign.left)
-
                   )
                 ],
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:retrobrew/view/groups_feed.dart';
 
 class CardBackgroundImage extends StatelessWidget {
 
@@ -14,6 +15,10 @@ class CardBackgroundImage extends StatelessWidget {
         height: 100,
         child:
         Card(
+          child: InkWell(
+            onTap: () =>  {
+              Navigator.push(context, MaterialPageRoute(builder: (ctx) => GroupsFeed(title: "Hello")))
+            },
           child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -35,7 +40,7 @@ class CardBackgroundImage extends StatelessWidget {
                   ),
                 ],
               )
-
+          )
           ),
           elevation: 5,
           margin: EdgeInsets.all(10),

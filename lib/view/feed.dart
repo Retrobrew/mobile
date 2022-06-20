@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:retrobrew/ui/feed/quick_group.dart';
 
 import '../ui/feed/block_post.dart';
 
@@ -10,13 +11,24 @@ class Feed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return BlockPost(items[index]);
-            },
-          )
+      body: Column(
+        children: [
+          QuickGroup(),
+          TextFormField(
+            decoration: const InputDecoration(
+              border: UnderlineInputBorder(),
+              labelText: 'What\'s going on ?',
+            ),
+          ),
+          Flexible(
+            child: ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                return BlockPost(items[index]);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
