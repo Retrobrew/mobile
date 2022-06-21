@@ -27,9 +27,11 @@ pipeline {
         }
         stage('Build for Android') {
             steps {
-                def docker = tool 'docker-agent';
-                sh "docker pull cirrusci/flutter";
-                sh "docker run -it -v $(pwd):/app -w /app cirrusci/flutter flutter build apk";
+                script {
+                    def docker = tool 'docker-agent';
+                    sh "docker pull cirrusci/flutter";
+                    sh "docker run -it -v $(pwd):/app -w /app cirrusci/flutter flutter build apk";
+                }
             }
         }
         stage('Cleanup') {
