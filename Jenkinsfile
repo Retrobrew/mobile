@@ -30,7 +30,7 @@ pipeline {
                 script {
                     def docker = tool 'docker-agent';
                     sh "docker pull cirrusci/flutter";
-                    sh "docker run -it -v $(pwd):/app -w /app cirrusci/flutter flutter build apk";
+                    sh "docker run -it -v \$(pwd):/app -w /app cirrusci/flutter flutter build apk";
                 }
             }
         }
