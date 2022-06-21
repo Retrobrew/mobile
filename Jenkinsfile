@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    tools {
+        dockerTool 'docker-agent'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -25,12 +27,16 @@ pipeline {
         }
         stage('Build for Android') {
             steps {
-                sh "flutter build apk"
+                def docker = tool 'docker-agent';
+                sh "docker pull cirrusci/flutter";
+                sh "docker run -it -v $(pwd):/app -w /app cirrusci/flutter flutter build apk";
             }
         }
-        stage('Build for iOS') {
+        stage('Cleanup') {
             steps {
-                sh "flutter build ios"
+                script {
+                    sh "docker rm -f image cirrusci/flutter";
+                }
             }
         }
     }
