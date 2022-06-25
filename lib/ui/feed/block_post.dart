@@ -11,7 +11,9 @@ class BlockPost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      Card(
+      InkWell(
+        onTap: () => { print("hello") },
+        child: Card(
         elevation: 3,
         child : Container(
           width: MediaQuery.of(context).size.width,
@@ -55,7 +57,7 @@ class BlockPost extends StatelessWidget {
               )
             ],
           ),
-        )
+        ))
       );
   }
 }
