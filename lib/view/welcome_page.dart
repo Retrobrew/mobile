@@ -53,11 +53,11 @@ class _WelcomePage extends State<WelcomePage> {
                 child: FittedBox(
                   fit: BoxFit.cover,
 
-                  /*child: SizedBox(
+                  child: SizedBox(
                       width: _controller.value.size.width ?? 0,
                       height: _controller.value.size.height ?? 0,
                       child: VideoPlayer(_controller)
-                  ),*/
+                  )
                 ),
               )
         ),
