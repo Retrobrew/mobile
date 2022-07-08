@@ -28,16 +28,14 @@ pipeline {
         stage('Build for Android') {
             steps {
                 script {
-                    def docker = tool 'docker-agent';
-                    sh "docker pull cirrusci/flutter";
-                    sh "docker run -it -v \$(pwd):/app -w /app cirrusci/flutter flutter build apk";
-                }
-            }
-        }
-        stage('Cleanup') {
-            steps {
-                script {
-                    sh "docker rm -f image cirrusci/flutter";
+                    nodejs(nodeJSInstallationName: 'nodejs'){
+                        def docker = tool 'docker-agent';
+                        sh('echo "#!/bin/bash" > flutter_build.sh');
+                        sh('echo "flutter pub get" >> flutter_build.sh');
+                        sh('echo "flutter build apk" >> flutter_build.sh');
+                        sh('chmod 777 flutter_build.sh');
+                        sh('docker run --rm -i -v /var/lib/docker/volumes/jenkins_home/_data/`(pwd | awk -F\'jenkins_home\' \'{printf \$2}\')`:/app -w /app cirrusci/flutter sh flutter_build.sh');
+                    }
                 }
             }
         }
