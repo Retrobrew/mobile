@@ -36,5 +36,17 @@ pipeline {
                 }
             }
         }
+        stage('Deploy on Retrobrew server') {
+            when {
+                branch 'master'
+            }
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'RETROBREW_FRONT_PROD', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+                    nodejs(nodeJSInstallationName: 'nodejs'){
+                        sh('sshpass -p ${PASSWORD} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P 22 build/app/outputs/flutter-apk/app-release.apk ${USERNAME}@192.168.1.20:/tmp/.')
+                    }
+                }
+            }
+        }
     }
 }
