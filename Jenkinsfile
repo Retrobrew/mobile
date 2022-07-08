@@ -30,11 +30,8 @@ pipeline {
                 script {
                     nodejs(nodeJSInstallationName: 'nodejs'){
                         def docker = tool 'docker-agent';
-                        sh('echo "#!/bin/bash" > flutter_build.sh');
-                        sh('echo "flutter pub get" >> flutter_build.sh');
-                        sh('echo "flutter build apk" >> flutter_build.sh');
-                        sh('chmod 777 flutter_build.sh');
-                        sh('docker run --rm -i -v /var/lib/docker/volumes/jenkins_home/_data/`(pwd | awk -F\'jenkins_home\' \'{printf \$2}\')`:/app -w /app cirrusci/flutter sh flutter_build.sh');
+                        sh('chmod 777 scripts/flutter_build.sh');
+                        sh('docker run --rm -i -v /var/lib/docker/volumes/jenkins_home/_data/`(pwd | awk -F\'jenkins_home\' \'{printf \$2}\')`:/app -w /app cirrusci/flutter sh scripts/flutter_build.sh');
                     }
                 }
             }
