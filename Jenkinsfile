@@ -43,7 +43,9 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'RETROBREW_FRONT_PROD', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
                     nodejs(nodeJSInstallationName: 'nodejs'){
+                        sh('sshpass -p ${PASSWORD} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P 22 scripts/update_latest_apk.sh ${USERNAME}@192.168.1.20:/home/prod/www/android/update_latest_apk.sh')
                         sh('sshpass -p ${PASSWORD} scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P 22 build/app/outputs/flutter-apk/app-release.apk ${USERNAME}@192.168.1.20:/tmp/.')
+                        sh('sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 22 ${USERNAME}@192.168.1.20 sh /home/prod/www/android/update_latest_apk.sh')
                     }
                 }
             }

@@ -5,7 +5,7 @@ if [ ! -d /home/prod/www/android ]; then
   exit 1
 fi
 
-echo -n "Copying new APK... "
+echo "Copying new APK... "
 
 LATEST_DIRECTORY=`date +%Y-%m-%d_%H-%M-%S`
 RESULT=0
@@ -32,7 +32,7 @@ else
   echo -e "[ \e[32mOK\e[0m ]: New APK copied"
 fi
 
-echo -n "Compressing old APKs... "
+echo "Compressing old APKs... "
 
 # loop on all folders except the 10 latest ones
 for folder in `ls -d */ | sort -r | tail -n +11`; do
