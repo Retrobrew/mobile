@@ -161,7 +161,7 @@ class _ApplicationState extends State<Application> {
                     leading: CircleAvatar(
                       radius: 12,
                       backgroundImage: NetworkImage(
-                        'https://sooxt98.space/content/images/size/w100/2019/01/profile.png',
+                        'https://i.pravatar.cc/50',
                       ),
                     ),
                     text: 'Cédric',

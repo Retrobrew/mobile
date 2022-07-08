@@ -17,7 +17,7 @@ class CardBackgroundImage extends StatelessWidget {
         Card(
           child: InkWell(
             onTap: () =>  {
-              Navigator.push(context, MaterialPageRoute(builder: (ctx) => GroupsFeed(title: "Hello")))
+              Navigator.push(context, MaterialPageRoute(builder: (ctx) => GroupFeed(title: "sss",)))
             },
           child: Container(
               decoration: BoxDecoration(
