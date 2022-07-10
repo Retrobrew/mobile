@@ -1,0 +1,3 @@
+class Auth {
+  static String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlZHJpYy5sZXByb2hvbkB5YWhvby5mciIsInN1YiI6ImJhMTAzZWRkLTNlMmItNGVkMy1hZTljLTQwYzljM2EzMmUzZSIsImlhdCI6MTY1NjE5MjUxOCwiZXhwIjoxNjU2MTkzMTE4fQ.c-EONu08pmP_FfKryUUmMzvw9VUa6MfhI3MM7tXcLxo';
+}

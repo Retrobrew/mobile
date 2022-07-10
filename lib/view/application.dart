@@ -1,10 +1,16 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
+import 'package:retrobrew/auth.dart';
+import 'package:retrobrew/provider/post_api_provider.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
 import 'package:retrobrew/view/profile.dart';
+
+import '../bloc/post_bloc.dart';
 
 
 class Application extends StatefulWidget {
@@ -56,7 +62,7 @@ class _ApplicationState extends State<Application> {
 
     return "Feeds";
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,7 +73,7 @@ class _ApplicationState extends State<Application> {
         extendBody: true,
         appBar: AppBar(
           title: Text(
-            getTitle()
+              getTitle()
           ),
         ),
         body: PageView.builder(
@@ -83,19 +89,19 @@ class _ApplicationState extends State<Application> {
           },
           itemCount: 4,
         ),
-        bottomNavigationBar: SafeArea(
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  spreadRadius: -10,
-                  blurRadius: 60,
-                  color: Colors.black.withOpacity(.4),
-                  offset: Offset(0, 25),
-                )
-              ],
-            ),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                spreadRadius: -10,
+                blurRadius: 60,
+                color: Colors.black.withOpacity(.4),
+                offset: Offset(0, 25),
+              )
+            ],
+          ),
+          child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3),
               child: GNav(
