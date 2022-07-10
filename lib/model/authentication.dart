@@ -6,6 +6,7 @@ part 'authentication.g.dart';
 @freezed
 class Authentication with _$Authentication {
   factory Authentication({
+    String? email, username, dateOfBirth, password, sexe, country,
     String? access_token
   }) = _Authentication;
 

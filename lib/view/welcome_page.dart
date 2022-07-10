@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:retrobrew/animation/fadeanimation.dart';
 import 'package:retrobrew/view/login.dart';
+import 'package:retrobrew/view/signup.dart';
 import 'package:video_player/video_player.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -14,7 +15,7 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePage extends State<WelcomePage> {
 
   late VideoPlayerController _controller;
-  
+
   @override
   void initState() {
       super.initState();
@@ -72,7 +73,7 @@ class _WelcomePage extends State<WelcomePage> {
                       _controller.pause();
                       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-                      Navigator.push(context, MaterialPageRoute(builder: (ctx) => Login()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => Login()));
 
                     },
                     child: Text("Login",style: GoogleFonts.heebo(
@@ -99,6 +100,8 @@ class _WelcomePage extends State<WelcomePage> {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
                   child: TextButton(
                       onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const Signup()));
+
                       },
                       child: Text("Sign up",style: GoogleFonts.heebo(
                         color: Colors.white,

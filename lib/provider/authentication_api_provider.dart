@@ -18,4 +18,5 @@ abstract class AuthenticationApiProvider {
   })
   Future<Authentication> getToken(
       @Body() Login login);
+
 }

@@ -20,6 +20,12 @@ Authentication _$AuthenticationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Authentication {
+  String? get email => throw _privateConstructorUsedError;
+  dynamic get username => throw _privateConstructorUsedError;
+  dynamic get dateOfBirth => throw _privateConstructorUsedError;
+  dynamic get password => throw _privateConstructorUsedError;
+  dynamic get sexe => throw _privateConstructorUsedError;
+  dynamic get country => throw _privateConstructorUsedError;
   String? get access_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +39,14 @@ abstract class $AuthenticationCopyWith<$Res> {
   factory $AuthenticationCopyWith(
           Authentication value, $Res Function(Authentication) then) =
       _$AuthenticationCopyWithImpl<$Res>;
-  $Res call({String? access_token});
+  $Res call(
+      {String? email,
+      dynamic username,
+      dynamic dateOfBirth,
+      dynamic password,
+      dynamic sexe,
+      dynamic country,
+      String? access_token});
 }
 
 /// @nodoc
@@ -47,9 +60,39 @@ class _$AuthenticationCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? email = freezed,
+    Object? username = freezed,
+    Object? dateOfBirth = freezed,
+    Object? password = freezed,
+    Object? sexe = freezed,
+    Object? country = freezed,
     Object? access_token = freezed,
   }) {
     return _then(_value.copyWith(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: username == freezed
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      dateOfBirth: dateOfBirth == freezed
+          ? _value.dateOfBirth
+          : dateOfBirth // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      sexe: sexe == freezed
+          ? _value.sexe
+          : sexe // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      country: country == freezed
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       access_token: access_token == freezed
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
@@ -65,7 +108,14 @@ abstract class _$$_AuthenticationCopyWith<$Res>
           _$_Authentication value, $Res Function(_$_Authentication) then) =
       __$$_AuthenticationCopyWithImpl<$Res>;
   @override
-  $Res call({String? access_token});
+  $Res call(
+      {String? email,
+      dynamic username,
+      dynamic dateOfBirth,
+      dynamic password,
+      dynamic sexe,
+      dynamic country,
+      String? access_token});
 }
 
 /// @nodoc
@@ -81,9 +131,24 @@ class __$$_AuthenticationCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? email = freezed,
+    Object? username = freezed,
+    Object? dateOfBirth = freezed,
+    Object? password = freezed,
+    Object? sexe = freezed,
+    Object? country = freezed,
     Object? access_token = freezed,
   }) {
     return _then(_$_Authentication(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: username == freezed ? _value.username : username,
+      dateOfBirth: dateOfBirth == freezed ? _value.dateOfBirth : dateOfBirth,
+      password: password == freezed ? _value.password : password,
+      sexe: sexe == freezed ? _value.sexe : sexe,
+      country: country == freezed ? _value.country : country,
       access_token: access_token == freezed
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
@@ -95,17 +160,36 @@ class __$$_AuthenticationCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Authentication implements _Authentication {
-  _$_Authentication({this.access_token});
+  _$_Authentication(
+      {this.email,
+      this.username,
+      this.dateOfBirth,
+      this.password,
+      this.sexe,
+      this.country,
+      this.access_token});
 
   factory _$_Authentication.fromJson(Map<String, dynamic> json) =>
       _$$_AuthenticationFromJson(json);
 
   @override
+  final String? email;
+  @override
+  final dynamic username;
+  @override
+  final dynamic dateOfBirth;
+  @override
+  final dynamic password;
+  @override
+  final dynamic sexe;
+  @override
+  final dynamic country;
+  @override
   final String? access_token;
 
   @override
   String toString() {
-    return 'Authentication(access_token: $access_token)';
+    return 'Authentication(email: $email, username: $username, dateOfBirth: $dateOfBirth, password: $password, sexe: $sexe, country: $country, access_token: $access_token)';
   }
 
   @override
@@ -113,6 +197,13 @@ class _$_Authentication implements _Authentication {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Authentication &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality()
+                .equals(other.dateOfBirth, dateOfBirth) &&
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality().equals(other.sexe, sexe) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality()
                 .equals(other.access_token, access_token));
   }
@@ -120,7 +211,14 @@ class _$_Authentication implements _Authentication {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(access_token));
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(dateOfBirth),
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(sexe),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(access_token));
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +232,30 @@ class _$_Authentication implements _Authentication {
 }
 
 abstract class _Authentication implements Authentication {
-  factory _Authentication({final String? access_token}) = _$_Authentication;
+  factory _Authentication(
+      {final String? email,
+      final dynamic username,
+      final dynamic dateOfBirth,
+      final dynamic password,
+      final dynamic sexe,
+      final dynamic country,
+      final String? access_token}) = _$_Authentication;
 
   factory _Authentication.fromJson(Map<String, dynamic> json) =
       _$_Authentication.fromJson;
 
+  @override
+  String? get email => throw _privateConstructorUsedError;
+  @override
+  dynamic get username => throw _privateConstructorUsedError;
+  @override
+  dynamic get dateOfBirth => throw _privateConstructorUsedError;
+  @override
+  dynamic get password => throw _privateConstructorUsedError;
+  @override
+  dynamic get sexe => throw _privateConstructorUsedError;
+  @override
+  dynamic get country => throw _privateConstructorUsedError;
   @override
   String? get access_token => throw _privateConstructorUsedError;
   @override

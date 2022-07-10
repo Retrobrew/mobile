@@ -232,7 +232,7 @@ class _LoginState extends State<Login> {
                               onTap: () {
                                 Navigator.of(context)
                                     .push(MaterialPageRoute(builder: (context) {
-                                  return const Singup();
+                                  return const Signup();
                                 }));
                               },
                               child: Text("Sign up",

@@ -153,6 +153,14 @@ mixin _$AuthenticationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String username, String password) login,
     required TResult Function() getCredential,
+    required TResult Function(
+            String email,
+            dynamic username,
+            dynamic dateOfBirth,
+            dynamic sexe,
+            dynamic country,
+            dynamic password)
+        signUp,
     required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -160,6 +168,9 @@ mixin _$AuthenticationEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -167,6 +178,9 @@ mixin _$AuthenticationEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
     required TResult orElse(),
   }) =>
@@ -175,6 +189,7 @@ mixin _$AuthenticationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(onLogin value) login,
     required TResult Function(onGetCredential value) getCredential,
+    required TResult Function(onSignUp value) signUp,
     required TResult Function(onLogout value) logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -182,6 +197,7 @@ mixin _$AuthenticationEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +205,7 @@ mixin _$AuthenticationEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
     required TResult orElse(),
   }) =>
@@ -287,6 +304,14 @@ class _$onLogin implements onLogin {
   TResult when<TResult extends Object?>({
     required TResult Function(String username, String password) login,
     required TResult Function() getCredential,
+    required TResult Function(
+            String email,
+            dynamic username,
+            dynamic dateOfBirth,
+            dynamic sexe,
+            dynamic country,
+            dynamic password)
+        signUp,
     required TResult Function() logout,
   }) {
     return login(username, password);
@@ -297,6 +322,9 @@ class _$onLogin implements onLogin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
   }) {
     return login?.call(username, password);
@@ -307,6 +335,9 @@ class _$onLogin implements onLogin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -321,6 +352,7 @@ class _$onLogin implements onLogin {
   TResult map<TResult extends Object?>({
     required TResult Function(onLogin value) login,
     required TResult Function(onGetCredential value) getCredential,
+    required TResult Function(onSignUp value) signUp,
     required TResult Function(onLogout value) logout,
   }) {
     return login(this);
@@ -331,6 +363,7 @@ class _$onLogin implements onLogin {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
   }) {
     return login?.call(this);
@@ -341,6 +374,7 @@ class _$onLogin implements onLogin {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
     required TResult orElse(),
   }) {
@@ -405,6 +439,14 @@ class _$onGetCredential implements onGetCredential {
   TResult when<TResult extends Object?>({
     required TResult Function(String username, String password) login,
     required TResult Function() getCredential,
+    required TResult Function(
+            String email,
+            dynamic username,
+            dynamic dateOfBirth,
+            dynamic sexe,
+            dynamic country,
+            dynamic password)
+        signUp,
     required TResult Function() logout,
   }) {
     return getCredential();
@@ -415,6 +457,9 @@ class _$onGetCredential implements onGetCredential {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
   }) {
     return getCredential?.call();
@@ -425,6 +470,9 @@ class _$onGetCredential implements onGetCredential {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -439,6 +487,7 @@ class _$onGetCredential implements onGetCredential {
   TResult map<TResult extends Object?>({
     required TResult Function(onLogin value) login,
     required TResult Function(onGetCredential value) getCredential,
+    required TResult Function(onSignUp value) signUp,
     required TResult Function(onLogout value) logout,
   }) {
     return getCredential(this);
@@ -449,6 +498,7 @@ class _$onGetCredential implements onGetCredential {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
   }) {
     return getCredential?.call(this);
@@ -459,6 +509,7 @@ class _$onGetCredential implements onGetCredential {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
     required TResult orElse(),
   }) {
@@ -471,6 +522,217 @@ class _$onGetCredential implements onGetCredential {
 
 abstract class onGetCredential implements AuthenticationEvent {
   const factory onGetCredential() = _$onGetCredential;
+}
+
+/// @nodoc
+abstract class _$$onSignUpCopyWith<$Res> {
+  factory _$$onSignUpCopyWith(
+          _$onSignUp value, $Res Function(_$onSignUp) then) =
+      __$$onSignUpCopyWithImpl<$Res>;
+  $Res call(
+      {String email,
+      dynamic username,
+      dynamic dateOfBirth,
+      dynamic sexe,
+      dynamic country,
+      dynamic password});
+}
+
+/// @nodoc
+class __$$onSignUpCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res>
+    implements _$$onSignUpCopyWith<$Res> {
+  __$$onSignUpCopyWithImpl(_$onSignUp _value, $Res Function(_$onSignUp) _then)
+      : super(_value, (v) => _then(v as _$onSignUp));
+
+  @override
+  _$onSignUp get _value => super._value as _$onSignUp;
+
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? username = freezed,
+    Object? dateOfBirth = freezed,
+    Object? sexe = freezed,
+    Object? country = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(_$onSignUp(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: username == freezed ? _value.username : username,
+      dateOfBirth: dateOfBirth == freezed ? _value.dateOfBirth : dateOfBirth,
+      sexe: sexe == freezed ? _value.sexe : sexe,
+      country: country == freezed ? _value.country : country,
+      password: password == freezed ? _value.password : password,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onSignUp implements onSignUp {
+  const _$onSignUp(
+      {required this.email,
+      this.username,
+      this.dateOfBirth,
+      this.sexe,
+      this.country,
+      this.password});
+
+  @override
+  final String email;
+  @override
+  final dynamic username;
+  @override
+  final dynamic dateOfBirth;
+  @override
+  final dynamic sexe;
+  @override
+  final dynamic country;
+  @override
+  final dynamic password;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.signUp(email: $email, username: $username, dateOfBirth: $dateOfBirth, sexe: $sexe, country: $country, password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onSignUp &&
+            const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality()
+                .equals(other.dateOfBirth, dateOfBirth) &&
+            const DeepCollectionEquality().equals(other.sexe, sexe) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.password, password));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(dateOfBirth),
+      const DeepCollectionEquality().hash(sexe),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(password));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$onSignUpCopyWith<_$onSignUp> get copyWith =>
+      __$$onSignUpCopyWithImpl<_$onSignUp>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username, String password) login,
+    required TResult Function() getCredential,
+    required TResult Function(
+            String email,
+            dynamic username,
+            dynamic dateOfBirth,
+            dynamic sexe,
+            dynamic country,
+            dynamic password)
+        signUp,
+    required TResult Function() logout,
+  }) {
+    return signUp(email, username, dateOfBirth, sexe, country, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String username, String password)? login,
+    TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
+    TResult Function()? logout,
+  }) {
+    return signUp?.call(email, username, dateOfBirth, sexe, country, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username, String password)? login,
+    TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp(email, username, dateOfBirth, sexe, country, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onLogin value) login,
+    required TResult Function(onGetCredential value) getCredential,
+    required TResult Function(onSignUp value) signUp,
+    required TResult Function(onLogout value) logout,
+  }) {
+    return signUp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onLogin value)? login,
+    TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
+    TResult Function(onLogout value)? logout,
+  }) {
+    return signUp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onLogin value)? login,
+    TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
+    TResult Function(onLogout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (signUp != null) {
+      return signUp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onSignUp implements AuthenticationEvent {
+  const factory onSignUp(
+      {required final String email,
+      final dynamic username,
+      final dynamic dateOfBirth,
+      final dynamic sexe,
+      final dynamic country,
+      final dynamic password}) = _$onSignUp;
+
+  String get email => throw _privateConstructorUsedError;
+  dynamic get username => throw _privateConstructorUsedError;
+  dynamic get dateOfBirth => throw _privateConstructorUsedError;
+  dynamic get sexe => throw _privateConstructorUsedError;
+  dynamic get country => throw _privateConstructorUsedError;
+  dynamic get password => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$onSignUpCopyWith<_$onSignUp> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -515,6 +777,14 @@ class _$onLogout implements onLogout {
   TResult when<TResult extends Object?>({
     required TResult Function(String username, String password) login,
     required TResult Function() getCredential,
+    required TResult Function(
+            String email,
+            dynamic username,
+            dynamic dateOfBirth,
+            dynamic sexe,
+            dynamic country,
+            dynamic password)
+        signUp,
     required TResult Function() logout,
   }) {
     return logout();
@@ -525,6 +795,9 @@ class _$onLogout implements onLogout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
   }) {
     return logout?.call();
@@ -535,6 +808,9 @@ class _$onLogout implements onLogout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String username, String password)? login,
     TResult Function()? getCredential,
+    TResult Function(String email, dynamic username, dynamic dateOfBirth,
+            dynamic sexe, dynamic country, dynamic password)?
+        signUp,
     TResult Function()? logout,
     required TResult orElse(),
   }) {
@@ -549,6 +825,7 @@ class _$onLogout implements onLogout {
   TResult map<TResult extends Object?>({
     required TResult Function(onLogin value) login,
     required TResult Function(onGetCredential value) getCredential,
+    required TResult Function(onSignUp value) signUp,
     required TResult Function(onLogout value) logout,
   }) {
     return logout(this);
@@ -559,6 +836,7 @@ class _$onLogout implements onLogout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
   }) {
     return logout?.call(this);
@@ -569,6 +847,7 @@ class _$onLogout implements onLogout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onLogin value)? login,
     TResult Function(onGetCredential value)? getCredential,
+    TResult Function(onSignUp value)? signUp,
     TResult Function(onLogout value)? logout,
     required TResult orElse(),
   }) {
