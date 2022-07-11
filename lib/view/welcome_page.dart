@@ -55,15 +55,18 @@ class _WelcomePage extends State<WelcomePage> {
                   fit: BoxFit.cover,
 
                   child: SizedBox(
-                      width: _controller.value.size.width ?? 0,
-                      height: _controller.value.size.height ?? 0,
+                      width: _controller.value.size.width,
+                      height: _controller.value.size.height,
                       child: VideoPlayer(_controller)
                   )
                 ),
               )
         ),
             ),
-            FadeAnimation(delay: 1, child: Image.asset("assets/logo.png")),
+            FadeAnimation(
+                delay: 1,
+                child: Image.asset("assets/logo.png")
+            ),
             FadeAnimation(delay: 1.5, child: Column(
               children: [
                 Spacer(),
@@ -73,7 +76,7 @@ class _WelcomePage extends State<WelcomePage> {
                       _controller.pause();
                       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-                      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => Login()));
+                      Navigator.of(context).pushNamed('/login');
 
                     },
                     child: Text("Login",style: GoogleFonts.heebo(

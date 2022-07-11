@@ -51,10 +51,8 @@ dependencies:
   flutter_bloc:
   json_annotation: ^4.5.0
   intl: ^0.17.0
-  cupertino_stepper: ^0.2.1
-  enhance_stepper: ^0.1.1
-  im_stepper: ^1.0.1+1
   searchfield: ^0.6.6
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

@@ -22,7 +22,7 @@ class PostsBloc extends Bloc<PostEvent, PostState> {
     on<PostEvent>((event, emit) async => {
       await event.map<FutureOr<void>>(onFetch: (e) async {
         var data = await _postApiProvider.getPosts("Bearer ${e.token}");
-        print(e);
+        print(data);
         emit(PostState.initial().copyWith(
             posts: data
         ));

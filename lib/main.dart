@@ -2,13 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:retrobrew/bloc/authentication_bloc.dart';
+import 'package:retrobrew/helper/routes.dart';
 import 'package:retrobrew/provider/authentication_api_provider.dart';
 import 'package:retrobrew/provider/user_api_provider.dart';
-import 'package:retrobrew/view/application.dart';
-import 'package:retrobrew/view/feed.dart';
-
-import 'view/login.dart';
-import 'view/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,10 +27,11 @@ class MyApp extends StatelessWidget {
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      initialRoute: '/',
+      routes: Routes.navigation,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
-      home: WelcomePage(),
     )
     );
   }

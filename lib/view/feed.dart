@@ -6,11 +6,12 @@ import 'package:retrobrew/ui/feed/quick_group.dart';
 import 'package:retrobrew/ui/shared/add_post.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../auth.dart';
 import '../ui/feed/block_post.dart';
 
 class Feed extends StatelessWidget {
-  Feed({Key? key}) : super(key: key);
+  Feed({Key? key, required this.accessToken}) : super(key: key);
+
+  final String accessToken;
 
 
   final List<String> items = List<String>.generate(
@@ -21,7 +22,7 @@ class Feed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => PostsBloc(PostApiProvider(Dio()))..add(PostEvent.onFetch(Auth.token)),
+      create: (context) => PostsBloc(PostApiProvider(Dio()))..add(PostEvent.onFetch(accessToken)),
       child: Scaffold(
           body:
           BlocConsumer<PostsBloc, PostState>(builder: (context, state) {
