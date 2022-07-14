@@ -42,7 +42,7 @@ dependencies:
   line_icons: ^2.0.1
   badges: ^2.0.0-nullsafety.1
   video_player: ^2.4.2
-  dio: ^4.0.6 # a suppr
+  dio: ^4.0.6
   freezed: ^2.0.3+1
   retrofit: '>=3.0.0 <4.0.0'
   extended_text_field: ^10.1.0
@@ -84,7 +84,6 @@ flutter:
     - assets/intro.mp4
     - assets/success.mp4
     - assets/logo.png
-    - assets/bg-profile.png
     - assets/bg-profile.gif
     - assets/profile-img.jpg
 
