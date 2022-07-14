@@ -75,7 +75,7 @@ class _GroupsFeed extends State<GroupFeed> with SingleTickerProviderStateMixin  
         SliverList(
                   delegate: SliverChildListDelegate(
                     List.generate(items.length, (index) {
-                      return BlockPost(items[index]);
+                      return Text("ok");
                     })
                   )
         ) ]),

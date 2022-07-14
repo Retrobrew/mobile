@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:retrobrew/model/post.dart';
 import 'package:retrobrew/ui/feed/block_comment.dart';
 import 'package:retrobrew/ui/feed/block_post.dart';
 
 class PostView extends StatefulWidget {
-  final String uuid;
 
-  const PostView({Key? key, required this.uuid}) : super(key: key);
+  final Post post;
+
+  const PostView({Key? key, required this.post}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _PostView();
@@ -14,16 +16,17 @@ class PostView extends StatefulWidget {
 }
 
 class _PostView extends State<PostView> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pokemon yellow"),
-        backgroundColor: Colors.amber,
+        title: Text(widget.post.postedIn!.name ?? "Missingno"),
+        backgroundColor: widget.post.postedIn!.name != null ? Colors.amber : Colors.grey
       ),
       body: Column(
         children: [
-          BlockPost("test"),
+          BlockPost(widget.post),
           Card(
             elevation: 3,
             child: Column(
@@ -54,7 +57,7 @@ class _PostView extends State<PostView> {
                       onPressed: () => {
                         print("hello")
                       },
-                      child: Icon(Icons.send),
+                      child: const Icon(Icons.send),
                     ),
                   )
                 ],

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_api_provider.dart';
+part of 'feeds_api_provider.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,9 +8,9 @@ part of 'post_api_provider.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps
 
-class _PostApiProvider implements PostApiProvider {
-  _PostApiProvider(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://api.retrobrew.fr/posts';
+class _FeedsApiProvider implements FeedsApiProvider {
+  _FeedsApiProvider(this._dio, {this.baseUrl}) {
+    baseUrl ??= 'https://api.retrobrew.fr/feeds';
   }
 
   final Dio _dio;
@@ -18,15 +18,14 @@ class _PostApiProvider implements PostApiProvider {
   String? baseUrl;
 
   @override
-  Future<List<Post>> getPosts(token) async {
+  Future<List<Post>> getHomeFeeds() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Post>>(
         Options(method: 'GET', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/',
+            .compose(_dio.options, '/home',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
@@ -36,35 +35,20 @@ class _PostApiProvider implements PostApiProvider {
   }
 
   @override
-  Future<Post> getPost(uuid, token) async {
+  Future<List<Post>> getUserFeeds(token) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Post>(
+    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Post>>(
         Options(method: 'GET', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/${uuid}',
+            .compose(_dio.options, '/my',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Post.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<Post> addPost(token, post) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': token};
-    _headers.removeWhere((k, v) => v == null);
-    final _data = <String, dynamic>{};
-    _data.addAll(post.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(_setStreamType<Post>(
-        Options(method: 'POST', headers: _headers, extra: _extra)
-            .compose(_dio.options, '/',
-                queryParameters: queryParameters, data: _data)
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = Post.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Post.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

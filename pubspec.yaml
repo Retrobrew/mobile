@@ -53,6 +53,8 @@ dependencies:
   intl: ^0.17.0
   searchfield: ^0.6.6
   shared_preferences:
+  sliver_header_delegate: ^0.0.5
+  colorize_text_avatar: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +85,9 @@ flutter:
     - assets/intro.mp4
     - assets/success.mp4
     - assets/logo.png
+    - assets/bg-profile.png
+    - assets/bg-profile.gif
+    - assets/profile-img.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

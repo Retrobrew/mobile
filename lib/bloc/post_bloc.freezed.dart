@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PostEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? token) onFetch,
+    required TResult Function(String? uuid, String? token) onFetch,
+    required TResult Function(String token, Post newPost) onAdd,
     required TResult Function(String token) onSendToken,
     required TResult Function() onWipe,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$PostEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onFetch value) onFetch,
+    required TResult Function(onAdd value) onAdd,
     required TResult Function(onSendToken value) onSendToken,
     required TResult Function(onWipe value) onWipe,
   }) =>
@@ -48,6 +52,7 @@ mixin _$PostEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
   }) =>
@@ -55,6 +60,7 @@ mixin _$PostEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
     required TResult orElse(),
@@ -81,7 +87,7 @@ class _$PostEventCopyWithImpl<$Res> implements $PostEventCopyWith<$Res> {
 abstract class _$$onFetchCopyWith<$Res> {
   factory _$$onFetchCopyWith(_$onFetch value, $Res Function(_$onFetch) then) =
       __$$onFetchCopyWithImpl<$Res>;
-  $Res call({String? token});
+  $Res call({String? uuid, String? token});
 }
 
 /// @nodoc
@@ -95,9 +101,14 @@ class __$$onFetchCopyWithImpl<$Res> extends _$PostEventCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? uuid = freezed,
     Object? token = freezed,
   }) {
     return _then(_$onFetch(
+      uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String?,
       token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -109,14 +120,16 @@ class __$$onFetchCopyWithImpl<$Res> extends _$PostEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$onFetch implements onFetch {
-  const _$onFetch(this.token);
+  const _$onFetch(this.uuid, this.token);
 
+  @override
+  final String? uuid;
   @override
   final String? token;
 
   @override
   String toString() {
-    return 'PostEvent.onFetch(token: $token)';
+    return 'PostEvent.onFetch(uuid: $uuid, token: $token)';
   }
 
   @override
@@ -124,12 +137,15 @@ class _$onFetch implements onFetch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$onFetch &&
+            const DeepCollectionEquality().equals(other.uuid, uuid) &&
             const DeepCollectionEquality().equals(other.token, token));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(uuid),
+      const DeepCollectionEquality().hash(token));
 
   @JsonKey(ignore: true)
   @override
@@ -139,33 +155,36 @@ class _$onFetch implements onFetch {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? token) onFetch,
+    required TResult Function(String? uuid, String? token) onFetch,
+    required TResult Function(String token, Post newPost) onAdd,
     required TResult Function(String token) onSendToken,
     required TResult Function() onWipe,
   }) {
-    return onFetch(token);
+    return onFetch(uuid, token);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
   }) {
-    return onFetch?.call(token);
+    return onFetch?.call(uuid, token);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
     required TResult orElse(),
   }) {
     if (onFetch != null) {
-      return onFetch(token);
+      return onFetch(uuid, token);
     }
     return orElse();
   }
@@ -174,6 +193,7 @@ class _$onFetch implements onFetch {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onFetch value) onFetch,
+    required TResult Function(onAdd value) onAdd,
     required TResult Function(onSendToken value) onSendToken,
     required TResult Function(onWipe value) onWipe,
   }) {
@@ -184,6 +204,7 @@ class _$onFetch implements onFetch {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
   }) {
@@ -194,6 +215,7 @@ class _$onFetch implements onFetch {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
     required TResult orElse(),
@@ -206,12 +228,175 @@ class _$onFetch implements onFetch {
 }
 
 abstract class onFetch implements PostEvent {
-  const factory onFetch(final String? token) = _$onFetch;
+  const factory onFetch(final String? uuid, final String? token) = _$onFetch;
 
+  String? get uuid => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$onFetchCopyWith<_$onFetch> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onAddCopyWith<$Res> {
+  factory _$$onAddCopyWith(_$onAdd value, $Res Function(_$onAdd) then) =
+      __$$onAddCopyWithImpl<$Res>;
+  $Res call({String token, Post newPost});
+
+  $PostCopyWith<$Res> get newPost;
+}
+
+/// @nodoc
+class __$$onAddCopyWithImpl<$Res> extends _$PostEventCopyWithImpl<$Res>
+    implements _$$onAddCopyWith<$Res> {
+  __$$onAddCopyWithImpl(_$onAdd _value, $Res Function(_$onAdd) _then)
+      : super(_value, (v) => _then(v as _$onAdd));
+
+  @override
+  _$onAdd get _value => super._value as _$onAdd;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+    Object? newPost = freezed,
+  }) {
+    return _then(_$onAdd(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      newPost == freezed
+          ? _value.newPost
+          : newPost // ignore: cast_nullable_to_non_nullable
+              as Post,
+    ));
+  }
+
+  @override
+  $PostCopyWith<$Res> get newPost {
+    return $PostCopyWith<$Res>(_value.newPost, (value) {
+      return _then(_value.copyWith(newPost: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$onAdd implements onAdd {
+  const _$onAdd(this.token, this.newPost);
+
+  @override
+  final String token;
+  @override
+  final Post newPost;
+
+  @override
+  String toString() {
+    return 'PostEvent.onAdd(token: $token, newPost: $newPost)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onAdd &&
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality().equals(other.newPost, newPost));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(newPost));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$onAddCopyWith<_$onAdd> get copyWith =>
+      __$$onAddCopyWithImpl<_$onAdd>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? uuid, String? token) onFetch,
+    required TResult Function(String token, Post newPost) onAdd,
+    required TResult Function(String token) onSendToken,
+    required TResult Function() onWipe,
+  }) {
+    return onAdd(token, newPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
+    TResult Function(String token)? onSendToken,
+    TResult Function()? onWipe,
+  }) {
+    return onAdd?.call(token, newPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
+    TResult Function(String token)? onSendToken,
+    TResult Function()? onWipe,
+    required TResult orElse(),
+  }) {
+    if (onAdd != null) {
+      return onAdd(token, newPost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onFetch value) onFetch,
+    required TResult Function(onAdd value) onAdd,
+    required TResult Function(onSendToken value) onSendToken,
+    required TResult Function(onWipe value) onWipe,
+  }) {
+    return onAdd(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
+    TResult Function(onSendToken value)? onSendToken,
+    TResult Function(onWipe value)? onWipe,
+  }) {
+    return onAdd?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
+    TResult Function(onSendToken value)? onSendToken,
+    TResult Function(onWipe value)? onWipe,
+    required TResult orElse(),
+  }) {
+    if (onAdd != null) {
+      return onAdd(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onAdd implements PostEvent {
+  const factory onAdd(final String token, final Post newPost) = _$onAdd;
+
+  String get token => throw _privateConstructorUsedError;
+  Post get newPost => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$onAddCopyWith<_$onAdd> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -278,7 +463,8 @@ class _$onSendToken implements onSendToken {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? token) onFetch,
+    required TResult Function(String? uuid, String? token) onFetch,
+    required TResult Function(String token, Post newPost) onAdd,
     required TResult Function(String token) onSendToken,
     required TResult Function() onWipe,
   }) {
@@ -288,7 +474,8 @@ class _$onSendToken implements onSendToken {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
   }) {
@@ -298,7 +485,8 @@ class _$onSendToken implements onSendToken {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
     required TResult orElse(),
@@ -313,6 +501,7 @@ class _$onSendToken implements onSendToken {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onFetch value) onFetch,
+    required TResult Function(onAdd value) onAdd,
     required TResult Function(onSendToken value) onSendToken,
     required TResult Function(onWipe value) onWipe,
   }) {
@@ -323,6 +512,7 @@ class _$onSendToken implements onSendToken {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
   }) {
@@ -333,6 +523,7 @@ class _$onSendToken implements onSendToken {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
     required TResult orElse(),
@@ -391,7 +582,8 @@ class _$onWipe implements onWipe {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? token) onFetch,
+    required TResult Function(String? uuid, String? token) onFetch,
+    required TResult Function(String token, Post newPost) onAdd,
     required TResult Function(String token) onSendToken,
     required TResult Function() onWipe,
   }) {
@@ -401,7 +593,8 @@ class _$onWipe implements onWipe {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
   }) {
@@ -411,7 +604,8 @@ class _$onWipe implements onWipe {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? token)? onFetch,
+    TResult Function(String? uuid, String? token)? onFetch,
+    TResult Function(String token, Post newPost)? onAdd,
     TResult Function(String token)? onSendToken,
     TResult Function()? onWipe,
     required TResult orElse(),
@@ -426,6 +620,7 @@ class _$onWipe implements onWipe {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onFetch value) onFetch,
+    required TResult Function(onAdd value) onAdd,
     required TResult Function(onSendToken value) onSendToken,
     required TResult Function(onWipe value) onWipe,
   }) {
@@ -436,6 +631,7 @@ class _$onWipe implements onWipe {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
   }) {
@@ -446,6 +642,7 @@ class _$onWipe implements onWipe {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onFetch value)? onFetch,
+    TResult Function(onAdd value)? onAdd,
     TResult Function(onSendToken value)? onSendToken,
     TResult Function(onWipe value)? onWipe,
     required TResult orElse(),

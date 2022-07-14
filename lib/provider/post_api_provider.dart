@@ -11,4 +11,11 @@ abstract class PostApiProvider {
 
     @GET('/')
     Future<List<Post>> getPosts(@Header("Authorization") String token);
+
+    @GET('/{uuid}')
+    Future<Post> getPost(@Path("uuid") String uuid, @Header("Authorization") String token);
+
+    @POST('/')
+    Future<Post> addPost(@Header("Authorization") String token, @Body() Post post);
+
 }

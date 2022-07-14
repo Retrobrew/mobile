@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:retrobrew/ui/shared/tag.dart';
 
 class HeaderPost extends StatelessWidget {
-  HeaderPost();
+  HeaderPost({required this.title, required this.author, required this.groupName});
+
+  final String title;
+  final String author;
+  final String groupName;
 
   @override
   Widget build(BuildContext context) {
@@ -12,17 +16,17 @@ class HeaderPost extends StatelessWidget {
         children: [
           Row(
             children: [
-              Tag("Pokemon Yellow", Colors.yellow),
+              Tag(groupName, groupName != "Missingno" ? Colors.yellow : Colors.grey),
               SizedBox(width: 5),
-              Text("Update Pokemon yellow v1",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              Text(title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
               )
             ],
           ),
           Row(
             children: [
-              Text("posted by Quentin Molero",
-              style: TextStyle(
+              Text("posted by $author",
+              style: const TextStyle(
                 fontStyle: FontStyle.italic
               ))
             ],
