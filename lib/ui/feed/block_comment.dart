@@ -14,7 +14,7 @@ class BlockComment extends StatelessWidget {
     return
       InkWell(
         onTap: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (ctx) => const PostView(uuid: "44")))
+          //Navigator.push(context, MaterialPageRoute(builder: (ctx) => const PostView(post: ,)))
       },
         child : Container(
           width: MediaQuery.of(context).size.width,

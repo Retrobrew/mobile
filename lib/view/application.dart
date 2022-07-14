@@ -4,10 +4,9 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
 import 'package:retrobrew/model/authentication.dart';
-import 'package:retrobrew/model/authentication.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
-import 'package:retrobrew/view/profile.dart';
+import 'package:retrobrew/ui/profile.dart';
 
 import '../bloc/authentication_bloc.dart';
 import '../bloc/post_bloc.dart';
@@ -39,9 +38,9 @@ class _ApplicationState extends State<Application> {
     super.initState();
   }
 
-  Widget navigate(String token) {
+  Widget navigate(String? token) {
     if (selectedIndex == 3) {
-      return const Profile();
+      return Profile();
     } else if (selectedIndex == 1) {
       return const MyGroups();
     }
@@ -68,9 +67,6 @@ class _ApplicationState extends State<Application> {
       builder: (context, state) {
         return Scaffold(
           extendBody: true,
-          appBar: AppBar(
-            title: Text(getTitle()),
-          ),
           body: PageView.builder(
             onPageChanged: (page) {
               setState(() {
@@ -80,7 +76,7 @@ class _ApplicationState extends State<Application> {
             },
             controller: controller,
             itemBuilder: (context, position) {
-              return navigate(state.authentication!.access_token!);
+              return navigate(state.authentication?.access_token);
             },
             itemCount: 4,
           ),

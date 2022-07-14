@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'post.dart';
+part of 'feeds.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,93 +14,90 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Post _$PostFromJson(Map<String, dynamic> json) {
-  return _Posts.fromJson(json);
+Feeds _$FeedsFromJson(Map<String, dynamic> json) {
+  return _Feeds.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Post {
-  String? get uuid => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  int? get commentsNb => throw _privateConstructorUsedError;
-  User? get author => throw _privateConstructorUsedError;
-  String? get content => throw _privateConstructorUsedError;
-  String? get createdAt => throw _privateConstructorUsedError;
-  Groups? get postedIn => throw _privateConstructorUsedError;
+mixin _$Feeds {
+  String get uuid => throw _privateConstructorUsedError; // ok
+  User get author => throw _privateConstructorUsedError; // ok
+  String get content => throw _privateConstructorUsedError; // ok
+  DateTime get createdAt => throw _privateConstructorUsedError; // ok
+  String get title => throw _privateConstructorUsedError; // ok
+  String? get media => throw _privateConstructorUsedError; // ok
+  Groups? get postedIn => throw _privateConstructorUsedError; // ?
   bool? get likedByUser => throw _privateConstructorUsedError;
   int? get likesNb => throw _privateConstructorUsedError;
-  String? get media => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
+  $FeedsCopyWith<Feeds> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PostCopyWith<$Res> {
-  factory $PostCopyWith(Post value, $Res Function(Post) then) =
-      _$PostCopyWithImpl<$Res>;
+abstract class $FeedsCopyWith<$Res> {
+  factory $FeedsCopyWith(Feeds value, $Res Function(Feeds) then) =
+      _$FeedsCopyWithImpl<$Res>;
   $Res call(
-      {String? uuid,
-      String? title,
-      int? commentsNb,
-      User? author,
-      String? content,
-      String? createdAt,
+      {String uuid,
+      User author,
+      String content,
+      DateTime createdAt,
+      String title,
+      String? media,
       Groups? postedIn,
       bool? likedByUser,
-      int? likesNb,
-      String? media});
+      int? likesNb});
 
-  $UserCopyWith<$Res>? get author;
+  $UserCopyWith<$Res> get author;
   $GroupsCopyWith<$Res>? get postedIn;
 }
 
 /// @nodoc
-class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
-  _$PostCopyWithImpl(this._value, this._then);
+class _$FeedsCopyWithImpl<$Res> implements $FeedsCopyWith<$Res> {
+  _$FeedsCopyWithImpl(this._value, this._then);
 
-  final Post _value;
+  final Feeds _value;
   // ignore: unused_field
-  final $Res Function(Post) _then;
+  final $Res Function(Feeds) _then;
 
   @override
   $Res call({
     Object? uuid = freezed,
-    Object? title = freezed,
-    Object? commentsNb = freezed,
     Object? author = freezed,
     Object? content = freezed,
     Object? createdAt = freezed,
+    Object? title = freezed,
+    Object? media = freezed,
     Object? postedIn = freezed,
     Object? likedByUser = freezed,
     Object? likesNb = freezed,
-    Object? media = freezed,
   }) {
     return _then(_value.copyWith(
       uuid: uuid == freezed
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      commentsNb: commentsNb == freezed
-          ? _value.commentsNb
-          : commentsNb // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      media: media == freezed
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
               as String?,
       postedIn: postedIn == freezed
           ? _value.postedIn
@@ -114,20 +111,12 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.likesNb
           : likesNb // ignore: cast_nullable_to_non_nullable
               as int?,
-      media: media == freezed
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res>? get author {
-    if (_value.author == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.author!, (value) {
+  $UserCopyWith<$Res> get author {
+    return $UserCopyWith<$Res>(_value.author, (value) {
       return _then(_value.copyWith(author: value));
     });
   }
@@ -145,74 +134,72 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_PostsCopyWith<$Res> implements $PostCopyWith<$Res> {
-  factory _$$_PostsCopyWith(_$_Posts value, $Res Function(_$_Posts) then) =
-      __$$_PostsCopyWithImpl<$Res>;
+abstract class _$$_FeedsCopyWith<$Res> implements $FeedsCopyWith<$Res> {
+  factory _$$_FeedsCopyWith(_$_Feeds value, $Res Function(_$_Feeds) then) =
+      __$$_FeedsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? uuid,
-      String? title,
-      int? commentsNb,
-      User? author,
-      String? content,
-      String? createdAt,
+      {String uuid,
+      User author,
+      String content,
+      DateTime createdAt,
+      String title,
+      String? media,
       Groups? postedIn,
       bool? likedByUser,
-      int? likesNb,
-      String? media});
+      int? likesNb});
 
   @override
-  $UserCopyWith<$Res>? get author;
+  $UserCopyWith<$Res> get author;
   @override
   $GroupsCopyWith<$Res>? get postedIn;
 }
 
 /// @nodoc
-class __$$_PostsCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
-    implements _$$_PostsCopyWith<$Res> {
-  __$$_PostsCopyWithImpl(_$_Posts _value, $Res Function(_$_Posts) _then)
-      : super(_value, (v) => _then(v as _$_Posts));
+class __$$_FeedsCopyWithImpl<$Res> extends _$FeedsCopyWithImpl<$Res>
+    implements _$$_FeedsCopyWith<$Res> {
+  __$$_FeedsCopyWithImpl(_$_Feeds _value, $Res Function(_$_Feeds) _then)
+      : super(_value, (v) => _then(v as _$_Feeds));
 
   @override
-  _$_Posts get _value => super._value as _$_Posts;
+  _$_Feeds get _value => super._value as _$_Feeds;
 
   @override
   $Res call({
     Object? uuid = freezed,
-    Object? title = freezed,
-    Object? commentsNb = freezed,
     Object? author = freezed,
     Object? content = freezed,
     Object? createdAt = freezed,
+    Object? title = freezed,
+    Object? media = freezed,
     Object? postedIn = freezed,
     Object? likedByUser = freezed,
     Object? likesNb = freezed,
-    Object? media = freezed,
   }) {
-    return _then(_$_Posts(
+    return _then(_$_Feeds(
       uuid: uuid == freezed
           ? _value.uuid
           : uuid // ignore: cast_nullable_to_non_nullable
-              as String?,
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      commentsNb: commentsNb == freezed
-          ? _value.commentsNb
-          : commentsNb // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String,
       author: author == freezed
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
-              as User?,
+              as User,
       content: content == freezed
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      media: media == freezed
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
               as String?,
       postedIn: postedIn == freezed
           ? _value.postedIn
@@ -226,75 +213,73 @@ class __$$_PostsCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.likesNb
           : likesNb // ignore: cast_nullable_to_non_nullable
               as int?,
-      media: media == freezed
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Posts implements _Posts {
-  _$_Posts(
-      {this.uuid,
-      this.title,
-      this.commentsNb,
-      this.author,
-      this.content,
-      this.createdAt,
+class _$_Feeds implements _Feeds {
+  _$_Feeds(
+      {required this.uuid,
+      required this.author,
+      required this.content,
+      required this.createdAt,
+      required this.title,
+      this.media,
       this.postedIn,
       this.likedByUser,
-      this.likesNb,
-      this.media});
+      this.likesNb});
 
-  factory _$_Posts.fromJson(Map<String, dynamic> json) =>
-      _$$_PostsFromJson(json);
+  factory _$_Feeds.fromJson(Map<String, dynamic> json) =>
+      _$$_FeedsFromJson(json);
 
   @override
-  final String? uuid;
+  final String uuid;
+// ok
   @override
-  final String? title;
+  final User author;
+// ok
   @override
-  final int? commentsNb;
+  final String content;
+// ok
   @override
-  final User? author;
+  final DateTime createdAt;
+// ok
   @override
-  final String? content;
+  final String title;
+// ok
   @override
-  final String? createdAt;
+  final String? media;
+// ok
   @override
   final Groups? postedIn;
+// ?
   @override
   final bool? likedByUser;
   @override
   final int? likesNb;
-  @override
-  final String? media;
 
   @override
   String toString() {
-    return 'Post(uuid: $uuid, title: $title, commentsNb: $commentsNb, author: $author, content: $content, createdAt: $createdAt, postedIn: $postedIn, likedByUser: $likedByUser, likesNb: $likesNb, media: $media)';
+    return 'Feeds(uuid: $uuid, author: $author, content: $content, createdAt: $createdAt, title: $title, media: $media, postedIn: $postedIn, likedByUser: $likedByUser, likesNb: $likesNb)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Posts &&
+            other is _$_Feeds &&
             const DeepCollectionEquality().equals(other.uuid, uuid) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.commentsNb, commentsNb) &&
             const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.media, media) &&
             const DeepCollectionEquality().equals(other.postedIn, postedIn) &&
             const DeepCollectionEquality()
                 .equals(other.likedByUser, likedByUser) &&
-            const DeepCollectionEquality().equals(other.likesNb, likesNb) &&
-            const DeepCollectionEquality().equals(other.media, media));
+            const DeepCollectionEquality().equals(other.likesNb, likesNb));
   }
 
   @JsonKey(ignore: true)
@@ -302,64 +287,60 @@ class _$_Posts implements _Posts {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(uuid),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(commentsNb),
       const DeepCollectionEquality().hash(author),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(media),
       const DeepCollectionEquality().hash(postedIn),
       const DeepCollectionEquality().hash(likedByUser),
-      const DeepCollectionEquality().hash(likesNb),
-      const DeepCollectionEquality().hash(media));
+      const DeepCollectionEquality().hash(likesNb));
 
   @JsonKey(ignore: true)
   @override
-  _$$_PostsCopyWith<_$_Posts> get copyWith =>
-      __$$_PostsCopyWithImpl<_$_Posts>(this, _$identity);
+  _$$_FeedsCopyWith<_$_Feeds> get copyWith =>
+      __$$_FeedsCopyWithImpl<_$_Feeds>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PostsToJson(this);
+    return _$$_FeedsToJson(this);
   }
 }
 
-abstract class _Posts implements Post {
-  factory _Posts(
-      {final String? uuid,
-      final String? title,
-      final int? commentsNb,
-      final User? author,
-      final String? content,
-      final String? createdAt,
+abstract class _Feeds implements Feeds {
+  factory _Feeds(
+      {required final String uuid,
+      required final User author,
+      required final String content,
+      required final DateTime createdAt,
+      required final String title,
+      final String? media,
       final Groups? postedIn,
       final bool? likedByUser,
-      final int? likesNb,
-      final String? media}) = _$_Posts;
+      final int? likesNb}) = _$_Feeds;
 
-  factory _Posts.fromJson(Map<String, dynamic> json) = _$_Posts.fromJson;
+  factory _Feeds.fromJson(Map<String, dynamic> json) = _$_Feeds.fromJson;
 
   @override
-  String? get uuid => throw _privateConstructorUsedError;
-  @override
-  String? get title => throw _privateConstructorUsedError;
-  @override
-  int? get commentsNb => throw _privateConstructorUsedError;
-  @override
-  User? get author => throw _privateConstructorUsedError;
-  @override
-  String? get content => throw _privateConstructorUsedError;
-  @override
-  String? get createdAt => throw _privateConstructorUsedError;
-  @override
+  String get uuid => throw _privateConstructorUsedError;
+  @override // ok
+  User get author => throw _privateConstructorUsedError;
+  @override // ok
+  String get content => throw _privateConstructorUsedError;
+  @override // ok
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  @override // ok
+  String get title => throw _privateConstructorUsedError;
+  @override // ok
+  String? get media => throw _privateConstructorUsedError;
+  @override // ok
   Groups? get postedIn => throw _privateConstructorUsedError;
-  @override
+  @override // ?
   bool? get likedByUser => throw _privateConstructorUsedError;
   @override
   int? get likesNb => throw _privateConstructorUsedError;
   @override
-  String? get media => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
-  _$$_PostsCopyWith<_$_Posts> get copyWith =>
+  _$$_FeedsCopyWith<_$_Feeds> get copyWith =>
       throw _privateConstructorUsedError;
 }

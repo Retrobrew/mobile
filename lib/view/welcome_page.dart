@@ -89,7 +89,7 @@ class _WelcomePage extends State<WelcomePage> {
                       elevation: 20,
 
                         backgroundColor: const Color(0xFF333553),
-                        padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 80),
+                        padding: const EdgeInsets.symmetric(vertical: 15.0,horizontal: 100),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)
                         )
@@ -99,17 +99,16 @@ class _WelcomePage extends State<WelcomePage> {
                   fontSize: 10
                 )),
                 Container(
-                  width: 200,
+                  width: 250,
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
                   child: TextButton(
                       onPressed: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const Signup()));
-
+                        Navigator.of(context).pushNamed('/app');
                       },
-                      child: Text("Sign up",style: GoogleFonts.heebo(
+                      child: Text("Guest mode",style: GoogleFonts.heebo(
                         color: Colors.white,
                         letterSpacing: 0.5,
-                        fontSize: 15.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),),
                       style:  TextButton.styleFrom(
