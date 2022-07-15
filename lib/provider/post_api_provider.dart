@@ -18,4 +18,10 @@ abstract class PostApiProvider {
     @POST('/')
     Future<Post> addPost(@Header("Authorization") String token, @Body() Post post);
 
+    @GET('/{uuid}/comments')
+    Future<List<Post>> getAllComments(@Path("uuid") String uuid, @Header("Authorization") String token);
+
+    @POST('/{uuid}/comment')
+    Future<void> postComment(@Path("uuid") String uuid, @Header("Authorization") String token, @Body() Post content);
+
 }
