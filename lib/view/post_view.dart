@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:loading_indicator/loading_indicator.dart';
 import 'package:retrobrew/model/post.dart';
 import 'package:retrobrew/provider/post_api_provider.dart';
 import 'package:retrobrew/ui/feed/block_comment.dart';
@@ -117,7 +116,7 @@ class _PostView extends State<PostView> {
         body: CustomScrollView(slivers: [
           SliverList(
               delegate: SliverChildListDelegate(
-                  List.generate(1, (index) => BlockPost(widget.post)))),
+                  List.generate(1, (index) => BlockPost(post: widget.post)))),
           SliverList(
               delegate: SliverChildListDelegate(
                   List.generate(_comments.length, (index) {

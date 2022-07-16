@@ -261,7 +261,7 @@ class _SignupState extends State<Signup> {
                     delay: 1,
                     child: TextButton(
                         onPressed: () {
-                          if(!COUNTRIES.contains(controllers["country"]!.text) ) {
+                          if(!COUNTRY_NAME.contains(controllers["country"]!.text) ) {
                             showDialog(context: context, builder: (BuildContext context) {
                               return const AlertDialog(
                                 title: Text('Error'),

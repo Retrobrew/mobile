@@ -6,7 +6,7 @@ import 'package:badges/badges.dart';
 import 'package:retrobrew/model/authentication.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
-import 'package:retrobrew/ui/profile.dart';
+import 'package:retrobrew/view/profile.dart';
 
 import '../bloc/authentication_bloc.dart';
 import '../bloc/post_bloc.dart';

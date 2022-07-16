@@ -15,8 +15,6 @@ class Feed extends StatelessWidget {
 
   final String? accessToken;
 
-
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -37,7 +35,7 @@ class Feed extends StatelessWidget {
                   ),
                   SliverList(
                     delegate: SliverChildListDelegate(List.generate(state.feeds.length, (index) {
-                      return BlockPost(state.feeds[index]);
+                      return BlockPost(post: state.feeds[index]);
                     })),
                   ),
                 ]));
