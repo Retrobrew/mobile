@@ -37,7 +37,7 @@ class BlockPost extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Column(
             children: [
-              HeaderPost(title: post.title!, author: post.author!.username ?? "Unknown member", groupName: groupName),
+              HeaderPost(title: post.title!, author: post.author!, groupName: groupName),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

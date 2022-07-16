@@ -139,6 +139,7 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    print(COUNTRY_NAME);
     var we = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -243,7 +244,7 @@ class _SignupState extends State<Signup> {
                   RoundedTextField(
                     controller: controllers["country"]!,
                       type: Type.search,
-                      suggestions: COUNTRIES,
+                      suggestions: COUNTRY_NAME,
                       name: Field.confirmpassword,
                       text: 'COUNTRY',
                       password: true,
