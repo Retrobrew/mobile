@@ -12,7 +12,7 @@ pipeline {
         stage('SonarQube Analysis') {
             when {
                 anyOf {
-                    branch 'dev/master'; branch 'feat/**'; branch 'fix/**'; branch 'master'
+                    branch 'develop'; branch 'feat/**'; branch 'fix/**'; branch 'master'
                 }
             }
             steps {
