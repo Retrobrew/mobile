@@ -26,9 +26,6 @@ pipeline {
             }
         }
         stage('Build for Android') {
-            when {
-                branch 'master'
-            }
             steps {
                 script {
                     nodejs(nodeJSInstallationName: 'nodejs'){
