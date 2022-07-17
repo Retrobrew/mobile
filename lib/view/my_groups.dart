@@ -23,6 +23,7 @@ class _MyGroupsState extends State<MyGroups> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text("My groups")),
       body: Container(
         width: MediaQuery.of(context).size.width,
         margin: EdgeInsets.all(10),
@@ -36,7 +37,6 @@ class _MyGroupsState extends State<MyGroups> {
               );
             },
           )
-
       ),
     );
   }

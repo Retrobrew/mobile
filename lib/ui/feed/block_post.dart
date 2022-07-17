@@ -75,48 +75,73 @@ class _BlockPostState extends State<BlockPost> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                           width: double.infinity,
                           child: Text(
                               widget.post.content!, textAlign: TextAlign.left))
                     ],
                   ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.end,
+                  Row(
                     children: [
-                      TextButton(
-                        onPressed: () {
-                          if(!liked) {
-                            setState(() {
-                              liked = true;
-                              numbersLike = numbersLike + 1;
-                            });
-                            _postApiProvider.like(widget.post.uuid!,
-                                "Bearer ${userState.state.authentication!.access_token!}");
+                      Text("${widget.post.commentsNb ?? "0"} comments",
+                      style: TextStyle(
+                        color: Colors.black45
+                      )),
+                      Spacer(),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.end,
+                        children: [
+                          // TextButton(
+                          //   onPressed: () {
+                          //   },
+                          //   child: Row(
+                          //     children: [
+                          //       Icon(Icons.comment_outlined, color: Colors.grey),
+                          //       Padding(
+                          //         padding: const EdgeInsets.all(8.0),
+                          //         child: Text("$numbersLike",
+                          //             style: TextStyle(
+                          //                 color: Colors.grey
+                          //             )),
+                          //       )
+                          //     ],
+                          //   ),
+                          // ),
+                          TextButton(
+                            onPressed: () {
+                              if(!liked) {
+                                setState(() {
+                                  liked = true;
+                                  numbersLike = numbersLike + 1;
+                                });
+                                _postApiProvider.like(widget.post.uuid!,
+                                    "Bearer ${userState.state.authentication!.access_token!}");
 
-                          }else {
-                            setState(() {
-                              liked = false;
-                              numbersLike = numbersLike - 1;
-                            });
-                            _postApiProvider.unlike(widget.post.uuid!,
-                                "Bearer ${userState.state.authentication!.access_token!}");
+                              }else {
+                                setState(() {
+                                  liked = false;
+                                  numbersLike = numbersLike - 1;
+                                });
+                                _postApiProvider.unlike(widget.post.uuid!,
+                                    "Bearer ${userState.state.authentication!.access_token!}");
 
-                          }
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.favorite, color: colorBtn),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text("$numbersLike",
-                                  style: TextStyle(
-                                      color: colorBtn
-                                  )),
-                            )
-                          ],
-                        ),
-                      )
+                              }
+                            },
+                            child: Row(
+                              children: [
+                                Icon(Icons.favorite, color: colorBtn),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text("$numbersLike",
+                                      style: TextStyle(
+                                          color: colorBtn
+                                      )),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   )
                 ],

@@ -34,10 +34,14 @@ class PostsBloc extends Bloc<PostEvent, PostState> {
                   emit(PostState.initial().copyWith(token: e.token)),
               onWipe: (_) => emit(PostState.initial()),
               onAdd: (onAdd value) async {
+
                 await _postApiProvider
                     .addPost("Bearer ${value.token}", value.newPost)
                     .whenComplete(() => emit(PostState.initial().copyWith(posts: [value.newPost, ...state.posts])))
                     .catchError((err) => print(err));
+                Post _post = Post(
+
+                );
                 emit(PostState.initial().copyWith(posts: [value.newPost, ...state.posts]));
               })
         });

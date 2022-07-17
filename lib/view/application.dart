@@ -118,23 +118,8 @@ class _ApplicationState extends State<Application> {
                       iconSize: 24,
                       padding: padding,
                       icon: LineIcons.heart,
-                      leading: selectedIndex == 1 || badge == 0
-                          ? null
-                          : Badge(
-                        badgeColor: Colors.red.shade100,
-                        elevation: 0,
-                        position: BadgePosition.topEnd(top: -12, end: -12),
-                        badgeContent: Text(
-                          badge.toString(),
-                          style: TextStyle(color: Colors.red.shade900),
-                        ),
-                        child: Icon(
-                          LineIcons.heart,
-                          color: selectedIndex == 1
-                              ? Colors.pink
-                              : Colors.black,
-                        ),
-                      ),
+                      text: 'My groups',
+
                     ),
                     GButton(
                       gap: gap,
@@ -145,7 +130,7 @@ class _ApplicationState extends State<Application> {
                       iconSize: 24,
                       padding: padding,
                       icon: LineIcons.search,
-                      text: 'Search',
+                      text: 'Discovery',
                     ),
                     GButton(
                       gap: gap,
@@ -156,11 +141,25 @@ class _ApplicationState extends State<Application> {
                       iconSize: 24,
                       padding: padding,
                       icon: LineIcons.user,
-                      leading: CircleAvatar(
-                        radius: 12,
-                        backgroundImage: NetworkImage(
-                          'https://i.pravatar.cc/50',
-                        ),
+                      leading: Column(
+                        children: [
+                          Badge(
+                            badgeColor: Colors.teal.shade100,
+                            elevation: 0,
+                            position: BadgePosition.topEnd(top: -12, end: -12),
+                            badgeContent: Text(
+                              badge.toString(),
+                              style: TextStyle(color: Colors.teal.shade900),
+                            ),
+                            child:
+                            CircleAvatar(
+                              radius: 12,
+                              backgroundImage: NetworkImage(
+                                'https://i.pravatar.cc/50',
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       text: 'Cédric',
                     )

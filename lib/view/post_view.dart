@@ -28,12 +28,12 @@ class _PostView extends State<PostView> {
   late AuthenticationBloc state;
   final TextEditingController _commentController = TextEditingController();
 
-  Widget _commentsWidget(String content) {
+  Widget _commentsWidget(Post content) {
     if (_comments.isEmpty) {
       return const Text("Nothing");
     }
 
-    return Card(elevation: 3, child: BlockComment(content));
+    return Card(elevation: 3, child: BlockComment(post: content));
   }
 
   pushCommentButton() {
@@ -120,7 +120,7 @@ class _PostView extends State<PostView> {
           SliverList(
               delegate: SliverChildListDelegate(
                   List.generate(_comments.length, (index) {
-            return _commentsWidget(_comments[index].content!);
+            return _commentsWidget(_comments[index]);
           }))),
         ]));
   }
