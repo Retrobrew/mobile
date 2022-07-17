@@ -6,7 +6,9 @@ import 'package:retrobrew/bloc/post_bloc.dart';
 import 'package:retrobrew/helper/routes.dart';
 import 'package:retrobrew/provider/authentication_api_provider.dart';
 import 'package:retrobrew/provider/post_api_provider.dart';
-import 'package:retrobrew/provider/user_api_provider.dart';
+
+import 'bloc/user_bloc.dart';
+import 'provider/user_api_provider.dart';
 
 void main() {
   runApp(const MyApp());

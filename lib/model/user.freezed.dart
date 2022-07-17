@@ -21,7 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get uuid => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get dateOfBirth => throw _privateConstructorUsedError;
   String? get sexe => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res>;
   $Res call(
       {String uuid,
-      String username,
+      String? username,
       String? email,
       String? dateOfBirth,
       String? sexe,
@@ -73,7 +73,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -105,7 +105,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   $Res call(
       {String uuid,
-      String username,
+      String? username,
       String? email,
       String? dateOfBirth,
       String? sexe,
@@ -140,7 +140,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -170,7 +170,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 class _$_User implements _User {
   _$_User(
       {required this.uuid,
-      required this.username,
+      this.username,
       this.email,
       this.dateOfBirth,
       this.sexe,
@@ -182,7 +182,7 @@ class _$_User implements _User {
   @override
   final String uuid;
   @override
-  final String username;
+  final String? username;
   @override
   final String? email;
   @override
@@ -240,7 +240,7 @@ class _$_User implements _User {
 abstract class _User implements User {
   factory _User(
       {required final String uuid,
-      required final String username,
+      final String? username,
       final String? email,
       final String? dateOfBirth,
       final String? sexe,
@@ -252,7 +252,7 @@ abstract class _User implements User {
   @override
   String get uuid => throw _privateConstructorUsedError;
   @override
-  String get username => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
   @override
   String? get email => throw _privateConstructorUsedError;
   @override

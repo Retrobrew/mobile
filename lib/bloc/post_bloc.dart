@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:retrobrew/model/authentication.dart';
+import 'package:supercharged/supercharged.dart';
 
 import '../model/post.dart';
 import '../provider/post_api_provider.dart';
