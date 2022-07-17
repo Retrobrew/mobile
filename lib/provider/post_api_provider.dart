@@ -7,7 +7,7 @@ part 'post_api_provider.g.dart';
 
 @RestApi(baseUrl: 'https://api.retrobrew.fr/posts')
 abstract class PostApiProvider {
-  factory PostApiProvider(Dio dio, {String baseUrl}) = _PostApiProvider;
+    factory PostApiProvider(Dio dio, {String baseUrl}) = _PostApiProvider;
 
     @GET('/')
     Future<List<Post>> getPosts(@Header("Authorization") String token);
@@ -17,5 +17,17 @@ abstract class PostApiProvider {
 
     @POST('/')
     Future<Post> addPost(@Header("Authorization") String token, @Body() Post post);
+
+    @GET('/{uuid}/comments')
+    Future<List<Post>> getAllComments(@Path("uuid") String uuid, @Header("Authorization") String token);
+
+    @POST('/{uuid}/comment')
+    Future<void> postComment(@Path("uuid") String uuid, @Header("Authorization") String token, @Body() Post content);
+
+    @PUT('/{uuid}/like')
+    Future<void> like(@Path('uuid') String uuid, @Header('Authorization') String token);
+
+    @PUT('/{uuid}/unlike')
+    Future<void> unlike(@Path('uuid') String uuid, @Header('Authorization') String token);
 
 }

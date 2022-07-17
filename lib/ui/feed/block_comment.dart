@@ -1,18 +1,39 @@
+import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:retrobrew/ui/feed/header_post.dart';
-import 'package:retrobrew/view/post_view.dart';
 
-import '../shared/tag.dart';
+import '../../helper/countries.dart';
+import '../../model/post.dart';
 
 class BlockComment extends StatelessWidget {
 
-  BlockComment(this.name);
-  final String name;
+  final Post post;
+
+  const BlockComment({Key? key, required this.post}) : super(key: key);
+
+  Widget _avatar() {
+    if(post.author!.picture == null) {
+      return TextAvatar(
+        shape: Shape.Circular,
+        fontSize: 15,
+        numberLetters: 2,
+        text: post.author!.username ?? "User deleted",
+      );
+    }
+
+    return CircleAvatar(
+      backgroundImage: NetworkImage(
+        post.author!.picture!,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return
       InkWell(
+        onDoubleTap: () => {
+          print("like")
+        },
         onTap: () => {
           //Navigator.push(context, MaterialPageRoute(builder: (ctx) => const PostView(post: ,)))
       },
@@ -23,13 +44,15 @@ class BlockComment extends StatelessWidget {
             children: [
               ListTile(
                 dense: true,
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'https://i.pravatar.cc/50',
-                  ),
-                ) ,
-                title: Text('Amélie Douillard'),
-                subtitle: Text('13 years ago'),
+                leading: _avatar(),
+                title: Row(
+                  children: [
+                    Text(post.author!.username ?? "User deleted"),
+                    Spacer(),
+                    Text(getCountryEmoji(post.author!.country!)),
+                  ],
+                ),
+                subtitle: Text(post.createdAt ?? "Unknown date"),
               ),
 
               Column(
@@ -38,7 +61,7 @@ class BlockComment extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
                       width: double.infinity,
-                      child: Text(name,
+                      child: Text(post.content!,
                           textAlign: TextAlign.left)
                   ),
                 ],

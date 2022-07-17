@@ -42,8 +42,6 @@ class FeedsBloc extends Bloc<FeedsEvent, FeedsState> {
             .addPost("Bearer ${value.token}", value.newPost)
             .whenComplete(() async => emit(FeedsState.initial().copyWith(feeds: await fetchPost(value.token))))
             .catchError((err) => print(err));
-
-
       })
     });
   }

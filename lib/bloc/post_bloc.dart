@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:retrobrew/model/authentication.dart';
+import 'package:supercharged/supercharged.dart';
 
 import '../model/post.dart';
 import '../provider/post_api_provider.dart';
@@ -34,10 +34,14 @@ class PostsBloc extends Bloc<PostEvent, PostState> {
                   emit(PostState.initial().copyWith(token: e.token)),
               onWipe: (_) => emit(PostState.initial()),
               onAdd: (onAdd value) async {
+
                 await _postApiProvider
                     .addPost("Bearer ${value.token}", value.newPost)
                     .whenComplete(() => emit(PostState.initial().copyWith(posts: [value.newPost, ...state.posts])))
                     .catchError((err) => print(err));
+                Post _post = Post(
+
+                );
                 emit(PostState.initial().copyWith(posts: [value.newPost, ...state.posts]));
               })
         });

@@ -8,7 +8,7 @@ class User with _$User {
 
   factory User({
     required String uuid,
-    required String username,
+    String? username,
     String? email,
     String? dateOfBirth,
     String? sexe,
