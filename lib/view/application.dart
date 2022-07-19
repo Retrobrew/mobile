@@ -1,12 +1,15 @@
+import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
+import 'package:retrobrew/bloc/user_bloc.dart';
 import 'package:retrobrew/model/authentication.dart';
+import 'package:retrobrew/ui/shared/loading.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
-import 'package:retrobrew/view/profile.dart';
+import 'package:retrobrew/view/profile_view.dart';
 
 import '../bloc/authentication_bloc.dart';
 import '../bloc/post_bloc.dart';
@@ -21,6 +24,7 @@ class _ApplicationState extends State<Application> {
   int badge = 0;
   final padding = EdgeInsets.symmetric(horizontal: 18, vertical: 12);
   double gap = 10;
+  bool loading = true;
 
   PageController controller = PageController();
 
@@ -40,7 +44,7 @@ class _ApplicationState extends State<Application> {
 
   Widget navigate(String? token) {
     if (selectedIndex == 3) {
-      return Profile();
+      return ProfileView();
     } else if (selectedIndex == 1) {
       return const MyGroups();
     }
@@ -60,9 +64,16 @@ class _ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
+    var userState = BlocProvider.of<UsersBloc>(context);
+    var access = BlocProvider.of<AuthenticationBloc>(context);
+
+    if(access.state.authentication?.access_token != null) {
+      userState.add(UserEvent.onGetFriendsRequestReceived(access.state.authentication!.access_token!));
+    }
+
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
-        // TODO: implement listener
+
       },
       builder: (context, state) {
         return Scaffold(
@@ -71,7 +82,7 @@ class _ApplicationState extends State<Application> {
             onPageChanged: (page) {
               setState(() {
                 selectedIndex = page;
-                badge = badge + 1;
+
               });
             },
             controller: controller,
@@ -143,25 +154,10 @@ class _ApplicationState extends State<Application> {
                       icon: LineIcons.user,
                       leading: Column(
                         children: [
-                          Badge(
-                            badgeColor: Colors.teal.shade100,
-                            elevation: 0,
-                            position: BadgePosition.topEnd(top: -12, end: -12),
-                            badgeContent: Text(
-                              badge.toString(),
-                              style: TextStyle(color: Colors.teal.shade900),
-                            ),
-                            child:
-                            CircleAvatar(
-                              radius: 12,
-                              backgroundImage: NetworkImage(
-                                'https://i.pravatar.cc/50',
-                              ),
-                            ),
-                          ),
+                          _picture(userState.state.friendsRequest?.length ?? 0, userState.state.profile?.picture, state.authentication?.username ?? "Guest"),
                         ],
                       ),
-                      text: 'Cédric',
+                      text: state.authentication?.username ?? "Guest",
                     )
                   ],
                   selectedIndex: selectedIndex,
@@ -178,5 +174,46 @@ class _ApplicationState extends State<Application> {
         );
       },
     );
+  }
+
+  Widget _avatar(String? picture, String? username) {
+    if(picture == null) {
+      return TextAvatar(
+        shape: Shape.Circular,
+        upperCase: true,
+        numberLetters: 2,
+        text: username,
+      );
+    }
+
+    return CircleAvatar(
+      radius: 12,
+      backgroundImage: NetworkImage(
+        picture
+      ),
+    );
+  }
+
+  _picture(int i, String? picture, String? username) {
+    if(i > 0) {
+      return Badge(
+        badgeColor: Colors.teal.shade100,
+        elevation: 0,
+        position: BadgePosition.topEnd(top: -12, end: -12),
+        badgeContent: Text(
+          i.toString(),
+          style: TextStyle(color: Colors.teal.shade900),
+        ),
+        child:
+          _avatar(picture, username)
+      );
+    }
+
+    return CircleAvatar(
+      radius: 12,
+      child: _avatar(picture, username)
+    );
+
+
   }
 }

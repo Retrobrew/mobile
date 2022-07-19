@@ -23,7 +23,10 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
           login: (e) async {
             try {
               var data = await _authProvider.getToken(Login(email: e.username, password: e.password));
-              emit(AuthenticationState.initial().copyWith(authentication: Authentication(access_token: data.access_token)));
+              var profile = await _userProvider.getMyProfile("Bearer ${data.access_token!}");
+              emit(AuthenticationState.initial().copyWith(authentication:
+              Authentication(username: profile.username, access_token: data.access_token))
+              );
 
             }catch(e) {
               print(e);

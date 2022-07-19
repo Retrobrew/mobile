@@ -7,7 +7,7 @@ part 'user.g.dart';
 class User with _$User {
 
   factory User({
-    required String uuid,
+    required String uuid, // TODO: attendre amé qu'elle change les dto pour remettre en required
     String? username,
     String? email,
     String? dateOfBirth,

@@ -20,7 +20,8 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Profile {
-  String get uuid => throw _privateConstructorUsedError;
+  String get uuid =>
+      throw _privateConstructorUsedError; // TODO: attendre amé qu'elle change les dto pour remettre en required
   String get username => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
   String? get sex => throw _privateConstructorUsedError;
@@ -171,7 +172,7 @@ class __$$_ProfileCopyWithImpl<$Res> extends _$ProfileCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Profile implements _Profile {
   _$_Profile(
-      {required this.uuid,
+      {this.uuid = "123",
       required this.username,
       this.picture,
       this.sex,
@@ -183,7 +184,9 @@ class _$_Profile implements _Profile {
       _$$_ProfileFromJson(json);
 
   @override
+  @JsonKey()
   final String uuid;
+// TODO: attendre amé qu'elle change les dto pour remettre en required
   @override
   final String username;
   @override
@@ -244,7 +247,7 @@ class _$_Profile implements _Profile {
 
 abstract class _Profile implements Profile {
   factory _Profile(
-      {required final String uuid,
+      {final String uuid,
       required final String username,
       final String? picture,
       final String? sex,
@@ -256,7 +259,7 @@ abstract class _Profile implements Profile {
 
   @override
   String get uuid => throw _privateConstructorUsedError;
-  @override
+  @override // TODO: attendre amé qu'elle change les dto pour remettre en required
   String get username => throw _privateConstructorUsedError;
   @override
   String? get picture => throw _privateConstructorUsedError;
