@@ -4,7 +4,8 @@ part of 'user_bloc.dart';
 class UserState with _$UserState  {
 
   const factory UserState({
-    Profile? profile
+    Profile? profile,
+    List<FriendRequest>? friendsRequest
   }) = _UserState;
 
   factory UserState.initial() => const UserState();

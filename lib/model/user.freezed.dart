@@ -20,7 +20,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String get uuid => throw _privateConstructorUsedError;
+  String get uuid =>
+      throw _privateConstructorUsedError; // TODO: attendre amé qu'elle change les dto pour remettre en required
   String? get username => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get dateOfBirth => throw _privateConstructorUsedError;
@@ -181,6 +182,7 @@ class _$_User implements _User {
 
   @override
   final String uuid;
+// TODO: attendre amé qu'elle change les dto pour remettre en required
   @override
   final String? username;
   @override
@@ -251,7 +253,7 @@ abstract class _User implements User {
 
   @override
   String get uuid => throw _privateConstructorUsedError;
-  @override
+  @override // TODO: attendre amé qu'elle change les dto pour remettre en required
   String? get username => throw _privateConstructorUsedError;
   @override
   String? get email => throw _privateConstructorUsedError;

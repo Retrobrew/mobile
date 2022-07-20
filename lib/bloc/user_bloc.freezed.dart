@@ -21,18 +21,27 @@ mixin _$UserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String token) onGetMyProfile,
     required TResult Function(String token, String uuid) onGetProfile,
+    required TResult Function(String token) onGetFriendsRequestReceived,
+    required TResult Function(String token, String uuid, STATUS status)
+        onResponseRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +49,27 @@ mixin _$UserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(onGetMyProfile value) onGetMyProfile,
     required TResult Function(onGetProfile value) onGetProfile,
+    required TResult Function(_onGetFriendsRequestReceived value)
+        onGetFriendsRequestReceived,
+    required TResult Function(_onResponseRequest value) onResponseRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +175,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult when<TResult extends Object?>({
     required TResult Function(String token) onGetMyProfile,
     required TResult Function(String token, String uuid) onGetProfile,
+    required TResult Function(String token) onGetFriendsRequestReceived,
+    required TResult Function(String token, String uuid, STATUS status)
+        onResponseRequest,
   }) {
     return onGetMyProfile(token);
   }
@@ -166,6 +187,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
   }) {
     return onGetMyProfile?.call(token);
   }
@@ -175,6 +199,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
     required TResult orElse(),
   }) {
     if (onGetMyProfile != null) {
@@ -188,6 +215,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult map<TResult extends Object?>({
     required TResult Function(onGetMyProfile value) onGetMyProfile,
     required TResult Function(onGetProfile value) onGetProfile,
+    required TResult Function(_onGetFriendsRequestReceived value)
+        onGetFriendsRequestReceived,
+    required TResult Function(_onResponseRequest value) onResponseRequest,
   }) {
     return onGetMyProfile(this);
   }
@@ -197,6 +227,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
   }) {
     return onGetMyProfile?.call(this);
   }
@@ -206,6 +239,9 @@ class _$onGetMyProfile implements onGetMyProfile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
     required TResult orElse(),
   }) {
     if (onGetMyProfile != null) {
@@ -304,6 +340,9 @@ class _$onGetProfile implements onGetProfile {
   TResult when<TResult extends Object?>({
     required TResult Function(String token) onGetMyProfile,
     required TResult Function(String token, String uuid) onGetProfile,
+    required TResult Function(String token) onGetFriendsRequestReceived,
+    required TResult Function(String token, String uuid, STATUS status)
+        onResponseRequest,
   }) {
     return onGetProfile(token, uuid);
   }
@@ -313,6 +352,9 @@ class _$onGetProfile implements onGetProfile {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
   }) {
     return onGetProfile?.call(token, uuid);
   }
@@ -322,6 +364,9 @@ class _$onGetProfile implements onGetProfile {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String token)? onGetMyProfile,
     TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
     required TResult orElse(),
   }) {
     if (onGetProfile != null) {
@@ -335,6 +380,9 @@ class _$onGetProfile implements onGetProfile {
   TResult map<TResult extends Object?>({
     required TResult Function(onGetMyProfile value) onGetMyProfile,
     required TResult Function(onGetProfile value) onGetProfile,
+    required TResult Function(_onGetFriendsRequestReceived value)
+        onGetFriendsRequestReceived,
+    required TResult Function(_onResponseRequest value) onResponseRequest,
   }) {
     return onGetProfile(this);
   }
@@ -344,6 +392,9 @@ class _$onGetProfile implements onGetProfile {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
   }) {
     return onGetProfile?.call(this);
   }
@@ -353,6 +404,9 @@ class _$onGetProfile implements onGetProfile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetMyProfile value)? onGetMyProfile,
     TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
     required TResult orElse(),
   }) {
     if (onGetProfile != null) {
@@ -376,8 +430,350 @@ abstract class onGetProfile implements UserEvent {
 }
 
 /// @nodoc
+abstract class _$$_onGetFriendsRequestReceivedCopyWith<$Res>
+    implements $UserEventCopyWith<$Res> {
+  factory _$$_onGetFriendsRequestReceivedCopyWith(
+          _$_onGetFriendsRequestReceived value,
+          $Res Function(_$_onGetFriendsRequestReceived) then) =
+      __$$_onGetFriendsRequestReceivedCopyWithImpl<$Res>;
+  @override
+  $Res call({String token});
+}
+
+/// @nodoc
+class __$$_onGetFriendsRequestReceivedCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res>
+    implements _$$_onGetFriendsRequestReceivedCopyWith<$Res> {
+  __$$_onGetFriendsRequestReceivedCopyWithImpl(
+      _$_onGetFriendsRequestReceived _value,
+      $Res Function(_$_onGetFriendsRequestReceived) _then)
+      : super(_value, (v) => _then(v as _$_onGetFriendsRequestReceived));
+
+  @override
+  _$_onGetFriendsRequestReceived get _value =>
+      super._value as _$_onGetFriendsRequestReceived;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+  }) {
+    return _then(_$_onGetFriendsRequestReceived(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_onGetFriendsRequestReceived implements _onGetFriendsRequestReceived {
+  const _$_onGetFriendsRequestReceived(this.token);
+
+  @override
+  final String token;
+
+  @override
+  String toString() {
+    return 'UserEvent.onGetFriendsRequestReceived(token: $token)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_onGetFriendsRequestReceived &&
+            const DeepCollectionEquality().equals(other.token, token));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_onGetFriendsRequestReceivedCopyWith<_$_onGetFriendsRequestReceived>
+      get copyWith => __$$_onGetFriendsRequestReceivedCopyWithImpl<
+          _$_onGetFriendsRequestReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String token) onGetMyProfile,
+    required TResult Function(String token, String uuid) onGetProfile,
+    required TResult Function(String token) onGetFriendsRequestReceived,
+    required TResult Function(String token, String uuid, STATUS status)
+        onResponseRequest,
+  }) {
+    return onGetFriendsRequestReceived(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String token)? onGetMyProfile,
+    TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
+  }) {
+    return onGetFriendsRequestReceived?.call(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String token)? onGetMyProfile,
+    TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
+    required TResult orElse(),
+  }) {
+    if (onGetFriendsRequestReceived != null) {
+      return onGetFriendsRequestReceived(token);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onGetMyProfile value) onGetMyProfile,
+    required TResult Function(onGetProfile value) onGetProfile,
+    required TResult Function(_onGetFriendsRequestReceived value)
+        onGetFriendsRequestReceived,
+    required TResult Function(_onResponseRequest value) onResponseRequest,
+  }) {
+    return onGetFriendsRequestReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onGetMyProfile value)? onGetMyProfile,
+    TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
+  }) {
+    return onGetFriendsRequestReceived?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onGetMyProfile value)? onGetMyProfile,
+    TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
+    required TResult orElse(),
+  }) {
+    if (onGetFriendsRequestReceived != null) {
+      return onGetFriendsRequestReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _onGetFriendsRequestReceived implements UserEvent {
+  const factory _onGetFriendsRequestReceived(final String token) =
+      _$_onGetFriendsRequestReceived;
+
+  @override
+  String get token => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_onGetFriendsRequestReceivedCopyWith<_$_onGetFriendsRequestReceived>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_onResponseRequestCopyWith<$Res>
+    implements $UserEventCopyWith<$Res> {
+  factory _$$_onResponseRequestCopyWith(_$_onResponseRequest value,
+          $Res Function(_$_onResponseRequest) then) =
+      __$$_onResponseRequestCopyWithImpl<$Res>;
+  @override
+  $Res call({String token, String uuid, STATUS status});
+}
+
+/// @nodoc
+class __$$_onResponseRequestCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res>
+    implements _$$_onResponseRequestCopyWith<$Res> {
+  __$$_onResponseRequestCopyWithImpl(
+      _$_onResponseRequest _value, $Res Function(_$_onResponseRequest) _then)
+      : super(_value, (v) => _then(v as _$_onResponseRequest));
+
+  @override
+  _$_onResponseRequest get _value => super._value as _$_onResponseRequest;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+    Object? uuid = freezed,
+    Object? status = freezed,
+  }) {
+    return _then(_$_onResponseRequest(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+      status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as STATUS,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_onResponseRequest implements _onResponseRequest {
+  const _$_onResponseRequest(this.token, this.uuid, this.status);
+
+  @override
+  final String token;
+  @override
+  final String uuid;
+  @override
+  final STATUS status;
+
+  @override
+  String toString() {
+    return 'UserEvent.onResponseRequest(token: $token, uuid: $uuid, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_onResponseRequest &&
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality().equals(other.uuid, uuid) &&
+            const DeepCollectionEquality().equals(other.status, status));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(uuid),
+      const DeepCollectionEquality().hash(status));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_onResponseRequestCopyWith<_$_onResponseRequest> get copyWith =>
+      __$$_onResponseRequestCopyWithImpl<_$_onResponseRequest>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String token) onGetMyProfile,
+    required TResult Function(String token, String uuid) onGetProfile,
+    required TResult Function(String token) onGetFriendsRequestReceived,
+    required TResult Function(String token, String uuid, STATUS status)
+        onResponseRequest,
+  }) {
+    return onResponseRequest(token, uuid, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String token)? onGetMyProfile,
+    TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
+  }) {
+    return onResponseRequest?.call(token, uuid, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String token)? onGetMyProfile,
+    TResult Function(String token, String uuid)? onGetProfile,
+    TResult Function(String token)? onGetFriendsRequestReceived,
+    TResult Function(String token, String uuid, STATUS status)?
+        onResponseRequest,
+    required TResult orElse(),
+  }) {
+    if (onResponseRequest != null) {
+      return onResponseRequest(token, uuid, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onGetMyProfile value) onGetMyProfile,
+    required TResult Function(onGetProfile value) onGetProfile,
+    required TResult Function(_onGetFriendsRequestReceived value)
+        onGetFriendsRequestReceived,
+    required TResult Function(_onResponseRequest value) onResponseRequest,
+  }) {
+    return onResponseRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onGetMyProfile value)? onGetMyProfile,
+    TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
+  }) {
+    return onResponseRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onGetMyProfile value)? onGetMyProfile,
+    TResult Function(onGetProfile value)? onGetProfile,
+    TResult Function(_onGetFriendsRequestReceived value)?
+        onGetFriendsRequestReceived,
+    TResult Function(_onResponseRequest value)? onResponseRequest,
+    required TResult orElse(),
+  }) {
+    if (onResponseRequest != null) {
+      return onResponseRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _onResponseRequest implements UserEvent {
+  const factory _onResponseRequest(
+          final String token, final String uuid, final STATUS status) =
+      _$_onResponseRequest;
+
+  @override
+  String get token => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
+  STATUS get status => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$_onResponseRequestCopyWith<_$_onResponseRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UserState {
   Profile? get profile => throw _privateConstructorUsedError;
+  List<FriendRequest>? get friendsRequest => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserStateCopyWith<UserState> get copyWith =>
@@ -388,7 +784,7 @@ mixin _$UserState {
 abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res>;
-  $Res call({Profile? profile});
+  $Res call({Profile? profile, List<FriendRequest>? friendsRequest});
 
   $ProfileCopyWith<$Res>? get profile;
 }
@@ -404,12 +800,17 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
   @override
   $Res call({
     Object? profile = freezed,
+    Object? friendsRequest = freezed,
   }) {
     return _then(_value.copyWith(
       profile: profile == freezed
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile?,
+      friendsRequest: friendsRequest == freezed
+          ? _value.friendsRequest
+          : friendsRequest // ignore: cast_nullable_to_non_nullable
+              as List<FriendRequest>?,
     ));
   }
 
@@ -431,7 +832,7 @@ abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
           _$_UserState value, $Res Function(_$_UserState) then) =
       __$$_UserStateCopyWithImpl<$Res>;
   @override
-  $Res call({Profile? profile});
+  $Res call({Profile? profile, List<FriendRequest>? friendsRequest});
 
   @override
   $ProfileCopyWith<$Res>? get profile;
@@ -450,12 +851,17 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? profile = freezed,
+    Object? friendsRequest = freezed,
   }) {
     return _then(_$_UserState(
       profile: profile == freezed
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile?,
+      friendsRequest: friendsRequest == freezed
+          ? _value._friendsRequest
+          : friendsRequest // ignore: cast_nullable_to_non_nullable
+              as List<FriendRequest>?,
     ));
   }
 }
@@ -463,14 +869,23 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserState implements _UserState {
-  const _$_UserState({this.profile});
+  const _$_UserState({this.profile, final List<FriendRequest>? friendsRequest})
+      : _friendsRequest = friendsRequest;
 
   @override
   final Profile? profile;
+  final List<FriendRequest>? _friendsRequest;
+  @override
+  List<FriendRequest>? get friendsRequest {
+    final value = _friendsRequest;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserState(profile: $profile)';
+    return 'UserState(profile: $profile, friendsRequest: $friendsRequest)';
   }
 
   @override
@@ -478,12 +893,16 @@ class _$_UserState implements _UserState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserState &&
-            const DeepCollectionEquality().equals(other.profile, profile));
+            const DeepCollectionEquality().equals(other.profile, profile) &&
+            const DeepCollectionEquality()
+                .equals(other._friendsRequest, _friendsRequest));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(profile));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(profile),
+      const DeepCollectionEquality().hash(_friendsRequest));
 
   @JsonKey(ignore: true)
   @override
@@ -492,10 +911,14 @@ class _$_UserState implements _UserState {
 }
 
 abstract class _UserState implements UserState {
-  const factory _UserState({final Profile? profile}) = _$_UserState;
+  const factory _UserState(
+      {final Profile? profile,
+      final List<FriendRequest>? friendsRequest}) = _$_UserState;
 
   @override
   Profile? get profile => throw _privateConstructorUsedError;
+  @override
+  List<FriendRequest>? get friendsRequest => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_UserStateCopyWith<_$_UserState> get copyWith =>

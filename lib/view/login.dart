@@ -38,8 +38,7 @@ class _LoginState extends State<Login> {
     var he = MediaQuery.of(context).size.height;
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (ctx) => Application()));
+        Navigator.pushNamedAndRemoveUntil(context, "/app", (route) => false);
       },
       builder: (context, state) {
         return Scaffold(

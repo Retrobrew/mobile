@@ -7,7 +7,7 @@ part 'profile.g.dart';
 class Profile with _$Profile {
 
   factory Profile({
-    required String uuid,
+    @Default("123") String uuid, // TODO: attendre amé qu'elle change les dto pour remettre en required
     required String username,
     String? picture,
     String? sex,

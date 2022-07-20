@@ -30,6 +30,10 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             lazy: false,
             create: (context) => PostsBloc(PostApiProvider(Dio())),
+          ),
+          BlocProvider(
+            lazy: false,
+            create: (context) => UsersBloc(UserApiProvider(Dio())),
           )
         ],
         child: MaterialApp(

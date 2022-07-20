@@ -30,7 +30,7 @@ class HeaderPost extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("posted by ${author.username} ${author.country != null ? getCountryEmoji(author.country!): ""}",
+              Text("posted by ${author.username}",
               style: const TextStyle(
                 fontStyle: FontStyle.italic
               ))

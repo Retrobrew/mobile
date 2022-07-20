@@ -33,9 +33,9 @@ class MyFriends extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: _avatar(),
             ),
-            Text("Cédric"),
-            Text("France"),
-            Text("Mâle"),
+            Text(profile.username),
+            Text(profile.country ?? "Retroland"),
+            Text(profile.sex ?? "Demiboy"),
             TextButton(onPressed: () => { }, child: Text("Remove"))
           ],
         ));
