@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:retrobrew/model/user.dart';
 import 'package:retrobrew/ui/shared/tag.dart';
 
+import '../../helper/color_generator.dart';
 import '../../helper/countries.dart';
 
 class HeaderPost extends StatelessWidget {
@@ -21,7 +22,7 @@ class HeaderPost extends StatelessWidget {
         children: [
           Row(
             children: [
-              Tag(groupName, groupName != "Missingno" ? Colors.yellow : Colors.grey),
+              Tag(groupName, groupName != "Missingno" ? generateColor(groupName) : Colors.grey),
               SizedBox(width: 5),
               Text(title,
               style: const TextStyle(fontWeight: FontWeight.bold),

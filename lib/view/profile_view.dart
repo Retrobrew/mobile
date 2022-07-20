@@ -16,7 +16,9 @@ import '../bloc/user_bloc.dart';
 import '../model/friend_request.dart';
 
 class ProfileView extends StatefulWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({Key? key, this.profile}) : super(key: key);
+
+  final Profile? profile;
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
@@ -36,8 +38,6 @@ class _ProfileViewState extends State<ProfileView> {
         friends = value;
       });
     });
-
-    print(friends);
   }
 
   @override
@@ -72,7 +72,7 @@ class _ProfileViewState extends State<ProfileView> {
               body: CustomScrollView(slivers: [
             SliverList(
                 delegate: SliverChildListDelegate(List.generate(
-                    1, (index) => HeaderProfile(profile: state.profile!)))),
+                    1, (index) => HeaderProfile(profile: state.profile!, currentUser: widget.profile == null)))),
             const SliverToBoxAdapter(
                 child: Padding(
               padding: EdgeInsets.all(8.0),
@@ -110,6 +110,9 @@ class _ProfileViewState extends State<ProfileView> {
                         message: "You declined the invitation",
                       ),
                     );
+                    userState.add(UserEvent.onResponseRequest(authState.state.authentication!.access_token!,
+                        id,
+                        STATUS.refused));
                   }
 
                   setState(() {

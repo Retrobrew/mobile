@@ -6,12 +6,16 @@ import 'package:retrobrew/provider/post_api_provider.dart';
 import 'package:retrobrew/view/post_view.dart';
 
 import '../../model/post.dart';
+import '../../view/sign_in_request.dart';
 import 'header_post.dart';
 
 class BlockPost extends StatefulWidget {
-  const BlockPost({Key? key, required this.post}) : super(key: key);
 
   final Post post;
+  Function()? onTap;
+  bool? disableLike = false;
+
+  BlockPost({Key? key, required this.post, this.onTap, this.disableLike}) : super(key: key);
 
   @override
   State<BlockPost> createState() => _BlockPostState();
@@ -51,10 +55,11 @@ class _BlockPostState extends State<BlockPost> {
     }
 
     return InkWell(
-        onTap: () =>
+        onTap: ()
         {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (ctx) => PostView(post: widget.post)))
+          if(widget.onTap != null) {
+            widget.onTap!();
+          }
         },
         child: Card(
             elevation: 3,
@@ -109,6 +114,11 @@ class _BlockPostState extends State<BlockPost> {
                           // ),
                           TextButton(
                             onPressed: () {
+                              if(widget.disableLike == true) {
+                                  showModalBottomSheet(
+                                      context: context, builder: (context) => SignInRequest());
+                                  return;
+                              }
                               if(!liked) {
                                 setState(() {
                                   liked = true;

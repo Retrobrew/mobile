@@ -39,13 +39,18 @@ class UsersBloc extends Bloc<UserEvent, UserState> {
                   await _userApiProvider.sendAcceptFriend(
                       "Bearer ${value.token}", value.uuid);
 
-                  var list = state.friendsRequest!
-                      .map((e) => e)
-                      .filter((element) => element.id.toString() != value.uuid)
-                      .toList();
 
-                  emit(UserState.initial().copyWith(friendsRequest: list));
+                }else {
+                  await _userApiProvider.sendDeclineFriend(
+                      "Bearer ${value.token}", value.uuid);
                 }
+
+                var list = state.friendsRequest!
+                    .map((e) => e)
+                    .filter((element) => element.id.toString() != value.uuid)
+                    .toList();
+
+                emit(UserState.initial().copyWith(friendsRequest: list));
               })
         });
   }

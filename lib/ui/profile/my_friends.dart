@@ -20,7 +20,8 @@ class MyFriends extends StatelessWidget {
     return CircleAvatar(
         radius: 65,
         backgroundImage: NetworkImage(
-            profile.picture!));
+            profile.picture!)
+      );
   }
 
   @override

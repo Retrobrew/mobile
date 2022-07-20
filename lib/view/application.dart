@@ -10,6 +10,7 @@ import 'package:retrobrew/ui/shared/loading.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
 import 'package:retrobrew/view/profile_view.dart';
+import 'package:retrobrew/view/sign_in_request.dart';
 
 import '../bloc/authentication_bloc.dart';
 import '../bloc/post_bloc.dart';
@@ -44,7 +45,7 @@ class _ApplicationState extends State<Application> {
 
   Widget navigate(String? token) {
     if (selectedIndex == 3) {
-      return ProfileView();
+      return token == null ? SignInRequest() : const ProfileView();
     } else if (selectedIndex == 1) {
       return const MyGroups();
     }
@@ -181,6 +182,7 @@ class _ApplicationState extends State<Application> {
       return TextAvatar(
         shape: Shape.Circular,
         upperCase: true,
+        size: 10,
         numberLetters: 2,
         text: username,
       );

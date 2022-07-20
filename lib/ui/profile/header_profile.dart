@@ -4,9 +4,10 @@ import 'package:retrobrew/helper/countries.dart';
 import 'package:retrobrew/model/profile.dart';
 
 class HeaderProfile extends StatelessWidget {
-  const HeaderProfile({Key? key, required this.profile}) : super(key: key);
+  const HeaderProfile({Key? key, required this.profile, required this.currentUser}) : super(key: key);
 
   final Profile profile;
+  final bool currentUser;
 
   Widget _avatar() {
     if (profile.picture == null) {
@@ -23,6 +24,25 @@ class HeaderProfile extends StatelessWidget {
         radius: 65,
         backgroundImage: NetworkImage(
             profile.picture!));
+  }
+
+  _followButton() {
+    if(currentUser) {
+
+      return Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: Theme(
+              data: ThemeData(
+                  primarySwatch: Colors.green),
+              child: ElevatedButton(
+                  onPressed: () => {
+
+                  },
+                  child: Text("Follow"))));
+    }
+
+    return Container();
+
   }
 
   @override
@@ -75,14 +95,7 @@ class HeaderProfile extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: Theme(
-                                      data: ThemeData(
-                                          primarySwatch: Colors.green),
-                                      child: ElevatedButton(
-                                          onPressed: () => {},
-                                          child: Text("Follow"))))
+                              _followButton()
                             ],
                           ),
                         ),

@@ -7,6 +7,8 @@ import 'package:retrobrew/provider/post_api_provider.dart';
 import 'package:retrobrew/ui/feed/quick_group.dart';
 import 'package:retrobrew/ui/shared/add_post.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:retrobrew/view/post_view.dart';
+import 'package:retrobrew/view/sign_in_request.dart';
 import '../bloc/feeds_bloc.dart';
 import '../ui/feed/block_post.dart';
 
@@ -35,7 +37,20 @@ class Feed extends StatelessWidget {
                   ),
                   SliverList(
                     delegate: SliverChildListDelegate(List.generate(state.feeds.length, (index) {
-                      return BlockPost(post: state.feeds[index]);
+                      return BlockPost(
+                        disableLike: accessToken == null,
+                        onTap: () {
+                          if(accessToken == null) {
+                            showModalBottomSheet(
+                                context: context, builder: (context) => SignInRequest());
+                          }else {
+                            Navigator.push(context,
+                                MaterialPageRoute(
+                                    builder: (ctx) => PostView(post: state.feeds[index])));
+                          }
+                        },
+                          post: state.feeds[index]
+                      );
                     })),
                   ),
                 ]));

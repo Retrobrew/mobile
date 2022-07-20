@@ -9,6 +9,6 @@ class Routes {
     '/': (context) => WelcomePage(),
     '/login': (context) => Login(),
     '/signup': (context) => const Signup(),
-    '/app': (context) => Application()
+    '/app': (context) => Application(),
   };
 }
