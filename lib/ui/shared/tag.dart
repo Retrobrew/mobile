@@ -4,7 +4,7 @@ class Tag extends StatelessWidget {
   Tag(this.content, this.color);
 
   final String content;
-  final MaterialColor color;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {

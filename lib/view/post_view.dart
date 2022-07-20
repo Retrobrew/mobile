@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:retrobrew/helper/color_generator.dart';
 import 'package:retrobrew/model/post.dart';
 import 'package:retrobrew/provider/post_api_provider.dart';
 import 'package:retrobrew/ui/feed/block_comment.dart';
@@ -106,12 +107,14 @@ class _PostView extends State<PostView> {
 
     setState(() => _loading = true);
 
+    String groupName = widget.post.postedIn!.name != null ? (widget.post.postedIn!.name != "home" ? widget.post.postedIn!.name! : "My feed") : "Missigno";
+
     return Scaffold(
         bottomNavigationBar: SafeArea(child: pushCommentButton()),
         appBar: AppBar(
-            title: Text(widget.post.postedIn!.name ?? "Missingno"),
-            backgroundColor: widget.post.postedIn!.name != null
-                ? Colors.amber
+            title: Text(groupName),
+            backgroundColor: groupName != "Missingno"
+                ? generateColor(groupName)
                 : Colors.grey),
         body: CustomScrollView(slivers: [
           SliverList(
