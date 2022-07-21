@@ -27,7 +27,7 @@ class HeaderProfile extends StatelessWidget {
   }
 
   _followButton() {
-    if(currentUser) {
+    if(!currentUser) {
 
       return Padding(
           padding: const EdgeInsets.only(right: 8.0),
@@ -48,122 +48,120 @@ class HeaderProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/bg-profile.gif"),
-                  fit: BoxFit.cover)),
-          child: Stack(
-            children: <Widget>[
-              SafeArea(
-                bottom: false,
-                right: false,
-                left: false,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 0, right: 0),
-                  child: Column(
-                    children: [
-                      _avatar(),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24.0),
-                        child: Wrap(
-                          children: [
-                            Text(profile.username,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 23)
-                            ),
-                            profile.sex != null && profile.sex == "Female" ? Icon(Icons.female, color: Colors.purpleAccent) : Icon(Icons.male, color: Colors.blue),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text("France  ${(profile.country != null ? getCountryEmoji(profile.country!) : "")}",
-                            style: TextStyle(
-                                color: Colors.white.withOpacity(0.85),
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 0.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              _followButton()
-                            ],
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/bg-profile.gif"),
+                fit: BoxFit.cover)),
+        child: Stack(
+          children: <Widget>[
+            SafeArea(
+              bottom: false,
+              right: false,
+              left: false,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 0, right: 0),
+                child: Column(
+                  children: [
+                    _avatar(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 24.0),
+                      child: Wrap(
+                        children: [
+                          Text(profile.username,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 23)
                           ),
-                        ),
+                          profile.sex != null && profile.sex == "Female" ? const Icon(Icons.female, color: Colors.purpleAccent) : const Icon(Icons.male, color: Colors.blue),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 24.0, left: 42, right: 32, bottom: 30),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Text("France  ${(profile.country != null ? getCountryEmoji(profile.country!) : "")}",
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(0.85),
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 0.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("2K",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold)),
-                                Text("Friends",
-                                    style: TextStyle(
-                                        color: Colors.white.withOpacity(0.8),
-                                        fontSize: 12.0))
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("26",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold)),
-                                Text("Posts",
-                                    style: TextStyle(
-                                        color: Colors.white.withOpacity(0.8),
-                                        fontSize: 12.0))
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("48",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold)),
-                                Text("Projects",
-                                    style: TextStyle(
-                                        color: Colors.white.withOpacity(0.8),
-                                        fontSize: 12.0))
-                              ],
-                            )
+                            _followButton()
                           ],
                         ),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 24.0, left: 42, right: 32, bottom: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("2K",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold)),
+                              Text("Friends",
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 12.0))
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("26",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold)),
+                              Text("Posts",
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 12.0))
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("48",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold)),
+                              Text("Projects",
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.8),
+                                      fontSize: 12.0))
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
 
-                    ],
-                  ),
+                  ],
                 ),
-              )
-            ],
-          )),
-    );
+              ),
+            )
+          ],
+        ));
     ;
   }
 }

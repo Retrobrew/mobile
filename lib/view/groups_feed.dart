@@ -1,86 +1,104 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:retrobrew/model/groups.dart';
+import 'package:retrobrew/provider/groups_api_provider.dart';
 import 'package:retrobrew/ui/feed/block_post.dart';
-import 'dart:math' as math;
+import 'package:retrobrew/ui/shared/loading.dart';
 
 import 'package:retrobrew/view/releases_page.dart';
 
-List<String> items = List<String>.generate(10000, (i) => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis malesuada nibh, ac porttitor lectus imperdiet eu. Vestibulum nec ipsum quam. Quisque vestibulum egestas purus, a convallis tellus elementum vel. Morbi a sem arcu. Curabitur viverra odio et neque maximus, eu vestibulum neque congue. Quisque dictum gravida augue, ut egestas lacus. Nullam semper augue ut turpis scelerisque, nec lobortis odio viverra. Phasellus blandit sit amet eros id laoreet. Nulla auctor tincidunt tellus, non rutrum diam tempus vel. Donec vitae justo lectus.');
+import '../bloc/groups_bloc.dart';
+import '../model/post.dart';
 
-class GroupFeed extends StatefulWidget {
-  GroupFeed({Key? key, required this.title}) : super(key: key);
+List<String> items = List<String>.generate(
+    10000,
+        (i) =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis malesuada nibh, ac porttitor lectus imperdiet eu. Vestibulum nec ipsum quam. Quisque vestibulum egestas purus, a convallis tellus elementum vel. Morbi a sem arcu. Curabitur viverra odio et neque maximus, eu vestibulum neque congue. Quisque dictum gravida augue, ut egestas lacus. Nullam semper augue ut turpis scelerisque, nec lobortis odio viverra. Phasellus blandit sit amet eros id laoreet. Nulla auctor tincidunt tellus, non rutrum diam tempus vel. Donec vitae justo lectus.');
 
-  final String title;
+class GroupsFeed extends StatefulWidget {
+  const GroupsFeed({Key? key, required this.group, required this.token})
+      : super(key: key);
+  final String token;
+  final Groups group;
 
   @override
-  _GroupsFeed createState() => _GroupsFeed();
+  GroupsFeedState createState() => GroupsFeedState();
 }
 
-
-class _GroupsFeed extends State<GroupFeed> with SingleTickerProviderStateMixin  {
-
+class GroupsFeedState extends State<GroupsFeed>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  bool loading = true;
 
   @override
   void initState() {
+    super.initState();
+
     _tabController = TabController(
       initialIndex: 0,
       length: 2,
       vsync: this,
     );
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-
-        },
-        child: Icon(Icons.create)
-      ),
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              title: Text(widget.title),
-              pinned: true,
-              floating: true,
-              snap: true,
-              backgroundColor: Colors.green,
-              expandedHeight: 150.0,
-              flexibleSpace: FlexibleSpaceBar(
-                background: Image.network("https://i.ytimg.com/vi/Wcp_ug1TsO0/maxresdefault.jpg", fit: BoxFit.cover),
-              ),
-              bottom: TabBar(
-                  indicatorColor: Colors.black,
-                  labelPadding: const EdgeInsets.only(
-                    top: 16,
-                    bottom: 12,
+    return BlocProvider(
+      create: (context) =>
+      GroupsBloc(GroupsApiProvider(Dio()))
+        ..add(GroupsEvent.onGetPosts(widget.token, widget.group.uuid!)),
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            onPressed: () => {}, child: Icon(Icons.create)),
+        body: BlocBuilder<GroupsBloc, GroupsState>(
+          builder: (context, state) {
+            return NestedScrollView(
+              floatHeaderSlivers: true,
+              headerSliverBuilder: (BuildContext context,
+                  bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverAppBar(
+                    title: Text(widget.group.name!),
+                    pinned: true,
+                    floating: true,
+                    snap: true,
+                    backgroundColor: Colors.green,
+                    expandedHeight: 150.0,
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: Image.network(
+                          "https://i.ytimg.com/vi/Wcp_ug1TsO0/maxresdefault.jpg",
+                          fit: BoxFit.cover),
+                    ),
+                    bottom: TabBar(
+                        indicatorColor: Colors.black,
+                        labelPadding: const EdgeInsets.only(
+                          top: 16,
+                          bottom: 12,
+                        ),
+                        controller: _tabController,
+                        tabs: [
+                          Text("Posts"),
+                          Text("Releases"),
+                        ]),
                   ),
-                  controller: _tabController,
-                  tabs: [
-                    Text("Posts"),
-                    Text("Releases"),
+                ];
+              },
+              body: TabBarView(
+                controller: _tabController,
+                children: [
+                  CustomScrollView(slivers: [
+                    SliverList(
+                        delegate: SliverChildListDelegate(
+                            List.generate(state.posts.length, (index) {
+                              return BlockPost(post: state.posts[index]);
+                            })))
                   ]),
-            ),
-          ];
-        },
-        body: TabBarView(
-          controller: _tabController,
-          children: [
-        CustomScrollView(
-        slivers: [
-        SliverList(
-                  delegate: SliverChildListDelegate(
-                    List.generate(items.length, (index) {
-                      return Text("ok");
-                    })
-                  )
-        ) ]),
-            const ReleasesPage(),
-          ],
+                  const ReleasesPage(),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
@@ -90,83 +108,5 @@ class _GroupsFeed extends State<GroupFeed> with SingleTickerProviderStateMixin  
   void dispose() {
     _tabController.dispose();
     super.dispose();
-  }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     floatingActionButton: FloatingActionButton(
-  //       onPressed: () => {
-  //
-  //       },
-  //       child: Icon(Icons.create)
-  //     ),
-  //     body: CustomScrollView(
-  //       slivers: <Widget>[
-  //         SliverAppBar(
-  //           title: Text('SliverAppBar'),
-  //           pinned: false,
-  //           floating: true,
-  //           snap: true,
-  //           backgroundColor: Colors.green,
-  //           expandedHeight: 150.0,
-  //           flexibleSpace: FlexibleSpaceBar(
-  //             background: Image.network("https://i.ytimg.com/vi/Wcp_ug1TsO0/maxresdefault.jpg", fit: BoxFit.cover),
-  //           ),
-  //         ),
-  //         SliverPersistentHeader(
-  //           delegate: SliverPersistentHeaderDelegate(
-  //             sliver: TabBar(
-  //               tabs: [
-  //                 Tab(icon: Icon(Icons.flight)),
-  //                 Tab(icon: Icon(Icons.directions_transit)),
-  //                 Tab(icon: Icon(Icons.directions_car)),
-  //               ],
-  //             ),
-  //           ),
-  //           pinned: false,
-  //         ),
-  //         SliverList(
-  //           delegate: SliverChildListDelegate(
-  //             List.generate(items.length, (index) {
-  //               return BlockPost(items[index]);
-  //             })
-  //           ),
-  //         )
-  //
-  //       ],
-  //     )
-  //
-  //   );
-  // }
-}
-
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _SliverAppBarDelegate({
-    required this.minHeight,
-    required this.maxHeight,
-    required this.child,
-  });
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-
-  @override
-  double get minExtent => minHeight;
-
-  @override
-  double get maxExtent => math.max(maxHeight, minHeight);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return SizedBox.expand(child: child);
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return maxHeight != oldDelegate.maxHeight ||
-        minHeight != oldDelegate.minHeight ||
-        child != oldDelegate.child;
   }
 }

@@ -5,15 +5,12 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
 import 'package:retrobrew/bloc/user_bloc.dart';
-import 'package:retrobrew/model/authentication.dart';
-import 'package:retrobrew/ui/shared/loading.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
 import 'package:retrobrew/view/profile_view.dart';
 import 'package:retrobrew/view/sign_in_request.dart';
 
 import '../bloc/authentication_bloc.dart';
-import '../bloc/post_bloc.dart';
 
 class Application extends StatefulWidget {
   @override
@@ -36,8 +33,6 @@ class _ApplicationState extends State<Application> {
     Colors.teal
   ];
 
-  List<String> appBarTitle = ["Feeds", "Profile"];
-
   @override
   void initState() {
     super.initState();
@@ -45,23 +40,14 @@ class _ApplicationState extends State<Application> {
 
   Widget navigate(String? token) {
     if (selectedIndex == 3) {
-      return token == null ? SignInRequest() : const ProfileView();
+      return token == null ? const SignInRequest() : const ProfileView();
     } else if (selectedIndex == 1) {
-      return const MyGroups();
+      return token == null ? const SignInRequest() : MyGroups();
     }
 
     return Feed(accessToken: token);
   }
 
-  String getTitle() {
-    if (selectedIndex == 3) {
-      return "Profile";
-    } else if (selectedIndex == 1) {
-      return "My groups";
-    }
-
-    return "Feeds";
-  }
 
   @override
   Widget build(BuildContext context) {

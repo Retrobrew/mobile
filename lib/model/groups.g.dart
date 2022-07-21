@@ -17,6 +17,7 @@ _$_Groups _$$_GroupsFromJson(Map<String, dynamic> json) => _$_Groups(
       description: json['description'] as String?,
       members:
           (json['members'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      creator: json['creator'] as bool?,
     );
 
 Map<String, dynamic> _$$_GroupsToJson(_$_Groups instance) => <String, dynamic>{
@@ -27,4 +28,5 @@ Map<String, dynamic> _$$_GroupsToJson(_$_Groups instance) => <String, dynamic>{
       'isProject': instance.isProject,
       'description': instance.description,
       'members': instance.members,
+      'creator': instance.creator,
     };

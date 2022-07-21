@@ -31,9 +31,7 @@ class _ProfileViewState extends State<ProfileView> {
 
   getAllFriends(bool isCurrentUser, String token) {
     var userApiProvider = UserApiProvider(Dio());
-    userApiProvider
-        .getMyFriends("Bearer $token")
-    .then((value) {
+    userApiProvider.getMyFriends("Bearer $token").then((value) {
       setState(() {
         friends = value;
       });
@@ -68,21 +66,32 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             );
           }
+
+          Profile profile =
+              widget.profile != null ? widget.profile! : state.profile!;
+
           return Scaffold(
               body: CustomScrollView(slivers: [
             SliverList(
                 delegate: SliverChildListDelegate(List.generate(
-                    1, (index) => HeaderProfile(profile: state.profile!, currentUser: widget.profile == null)))),
-            const SliverToBoxAdapter(
+                    1,
+                    (index) => HeaderProfile(
+                        profile: profile,
+                        currentUser: widget.profile == null)))),
+            SliverToBoxAdapter(
                 child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Friends request",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w600, fontSize: 17.0)),
+              padding: const EdgeInsets.all(8.0),
+              child: (widget.profile == null
+                  ? const Text("Friends request",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 17.0))
+                  : Container()),
             )),
             SliverList(
                 delegate: SliverChildListDelegate(List.generate(
-                    friendsRequest.isNotEmpty ? friendsRequest.length : 1, (index) {
+                    friendsRequest.isNotEmpty
+                        ? friendsRequest.length
+                        : (widget.profile != null ? 0 : 1), (index) {
               if (!friendsRequest.isNotEmpty) {
                 return const Center(child: Text("You don't have any request"));
               }
@@ -100,7 +109,8 @@ class _ProfileViewState extends State<ProfileView> {
                             "You are now friend with ${friendsRequest[index].requester.username!}",
                       ),
                     );
-                    userState.add(UserEvent.onResponseRequest(authState.state.authentication!.access_token!,
+                    userState.add(UserEvent.onResponseRequest(
+                        authState.state.authentication!.access_token!,
                         id,
                         STATUS.accepted));
                   } else {
@@ -110,7 +120,8 @@ class _ProfileViewState extends State<ProfileView> {
                         message: "You declined the invitation",
                       ),
                     );
-                    userState.add(UserEvent.onResponseRequest(authState.state.authentication!.access_token!,
+                    userState.add(UserEvent.onResponseRequest(
+                        authState.state.authentication!.access_token!,
                         id,
                         STATUS.refused));
                   }
@@ -121,12 +132,12 @@ class _ProfileViewState extends State<ProfileView> {
                 },
               );
             }))),
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
                 child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("My friends",
-                  style:
-                      TextStyle(fontWeight: FontWeight.w600, fontSize: 17.0)),
+              padding: const EdgeInsets.all(8.0),
+              child: Text("${friends.length} friends",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 17.0)),
             )),
             SliverGrid.count(
               crossAxisCount: 2,
@@ -134,7 +145,9 @@ class _ProfileViewState extends State<ProfileView> {
                   friends.length,
                   (index) => Padding(
                         padding: const EdgeInsets.all(20),
-                        child: MyFriends(profile: friends[index]),
+                        child: MyFriends(
+                            profile: friends[index],
+                            removeButton: widget.profile != null),
                       )),
             ),
           ]));

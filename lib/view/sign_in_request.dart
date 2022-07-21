@@ -18,7 +18,7 @@ class SignInRequest extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image(image: Image.network("https://i.pinimg.com/originals/01/ca/05/01ca051bd9cc85346b2144d218ad8e05.gif",).image,
+              child: Image(image: Image.network("https://i.pinimg.com/originals/01/ca/05/01ca051bd9cc85346b2144d218ad8e05.gif").image,
               width: 100),
             ),
             Text("Hey guy"),

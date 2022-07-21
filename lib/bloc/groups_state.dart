@@ -1,6 +1,13 @@
 part of 'groups_bloc.dart';
 
-@immutable
-abstract class GroupsState {}
+@freezed
+class GroupsState with _$GroupsState  {
 
-class GroupsInitial extends GroupsState {}
+  const factory GroupsState({
+    required List<Groups> groups,
+    required List<Post> posts
+  }) = _GroupsState;
+
+  factory GroupsState.initial() => const GroupsState(groups: [], posts: []);
+
+}

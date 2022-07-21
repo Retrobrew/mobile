@@ -31,12 +31,6 @@ class FriendRequestCard extends StatelessWidget {
         child: Card(
           child: InkWell(
               onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (ctx) => GroupFeed(
-                                  title: "sss",
-                                )))
                   },
               child: Container(
                   decoration: _coverBg(),

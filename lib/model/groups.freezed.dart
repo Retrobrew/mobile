@@ -26,7 +26,8 @@ mixin _$Groups {
   String? get picture => throw _privateConstructorUsedError;
   bool? get isProject => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<String>? get members => throw _privateConstructorUsedError;
+  List<String>? get members => throw _privateConstructorUsedError; // TODO
+  bool? get creator => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $GroupsCopyWith<$Res> {
       String? picture,
       bool? isProject,
       String? description,
-      List<String>? members});
+      List<String>? members,
+      bool? creator});
 
   $UserCopyWith<$Res>? get createdBy;
 }
@@ -66,6 +68,7 @@ class _$GroupsCopyWithImpl<$Res> implements $GroupsCopyWith<$Res> {
     Object? isProject = freezed,
     Object? description = freezed,
     Object? members = freezed,
+    Object? creator = freezed,
   }) {
     return _then(_value.copyWith(
       uuid: uuid == freezed
@@ -96,6 +99,10 @@ class _$GroupsCopyWithImpl<$Res> implements $GroupsCopyWith<$Res> {
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      creator: creator == freezed
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 
@@ -123,7 +130,8 @@ abstract class _$$_GroupsCopyWith<$Res> implements $GroupsCopyWith<$Res> {
       String? picture,
       bool? isProject,
       String? description,
-      List<String>? members});
+      List<String>? members,
+      bool? creator});
 
   @override
   $UserCopyWith<$Res>? get createdBy;
@@ -147,6 +155,7 @@ class __$$_GroupsCopyWithImpl<$Res> extends _$GroupsCopyWithImpl<$Res>
     Object? isProject = freezed,
     Object? description = freezed,
     Object? members = freezed,
+    Object? creator = freezed,
   }) {
     return _then(_$_Groups(
       uuid: uuid == freezed
@@ -177,6 +186,10 @@ class __$$_GroupsCopyWithImpl<$Res> extends _$GroupsCopyWithImpl<$Res>
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      creator: creator == freezed
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -191,7 +204,8 @@ class _$_Groups implements _Groups {
       this.picture,
       this.isProject,
       this.description,
-      final List<String>? members})
+      final List<String>? members,
+      this.creator})
       : _members = members;
 
   factory _$_Groups.fromJson(Map<String, dynamic> json) =>
@@ -218,9 +232,13 @@ class _$_Groups implements _Groups {
     return EqualUnmodifiableListView(value);
   }
 
+// TODO
+  @override
+  final bool? creator;
+
   @override
   String toString() {
-    return 'Groups(uuid: $uuid, name: $name, createdBy: $createdBy, picture: $picture, isProject: $isProject, description: $description, members: $members)';
+    return 'Groups(uuid: $uuid, name: $name, createdBy: $createdBy, picture: $picture, isProject: $isProject, description: $description, members: $members, creator: $creator)';
   }
 
   @override
@@ -235,7 +253,8 @@ class _$_Groups implements _Groups {
             const DeepCollectionEquality().equals(other.isProject, isProject) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other._members, _members));
+            const DeepCollectionEquality().equals(other._members, _members) &&
+            const DeepCollectionEquality().equals(other.creator, creator));
   }
 
   @JsonKey(ignore: true)
@@ -248,7 +267,8 @@ class _$_Groups implements _Groups {
       const DeepCollectionEquality().hash(picture),
       const DeepCollectionEquality().hash(isProject),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(_members));
+      const DeepCollectionEquality().hash(_members),
+      const DeepCollectionEquality().hash(creator));
 
   @JsonKey(ignore: true)
   @override
@@ -269,7 +289,8 @@ abstract class _Groups implements Groups {
       final String? picture,
       final bool? isProject,
       final String? description,
-      final List<String>? members}) = _$_Groups;
+      final List<String>? members,
+      final bool? creator}) = _$_Groups;
 
   factory _Groups.fromJson(Map<String, dynamic> json) = _$_Groups.fromJson;
 
@@ -287,6 +308,8 @@ abstract class _Groups implements Groups {
   String? get description => throw _privateConstructorUsedError;
   @override
   List<String>? get members => throw _privateConstructorUsedError;
+  @override // TODO
+  bool? get creator => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_GroupsCopyWith<_$_Groups> get copyWith =>

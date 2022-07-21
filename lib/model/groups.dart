@@ -14,7 +14,8 @@ class Groups with _$Groups {
     String? picture,
     bool? isProject,
     String? description,
-    List<String>? members // TODO
+    List<String>? members, // TODO
+    bool? creator
   }) = _Groups;
 
   factory Groups.fromJson(Map<String, dynamic> json) => _$GroupsFromJson(json);
