@@ -5,8 +5,11 @@ class CardBackgroundImage extends StatelessWidget {
 
   final String title;
   final String image;
+  final Function() onTap;
 
-  const CardBackgroundImage({Key? key, required this.title, required this.image}) : super(key: key);
+  const CardBackgroundImage({Key? key, required this.title, required this.image, required this.onTap}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +19,15 @@ class CardBackgroundImage extends StatelessWidget {
         child:
         Card(
           child: InkWell(
-            onTap: () =>  {
-              Navigator.push(context, MaterialPageRoute(builder: (ctx) => GroupFeed(title: "sss",)))
+            onTap: ()  {
+              onTap();
             },
           child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(image),
                   fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                  colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
                 ),
               ),
               child: Row(

@@ -1,8 +1,10 @@
+import 'package:cupertino_modal_sheet/cupertino_modal_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:retrobrew/animation/fadeanimation.dart';
 import 'package:retrobrew/view/login.dart';
+import 'package:retrobrew/view/sign_in_request.dart';
 import 'package:retrobrew/view/signup.dart';
 import 'package:video_player/video_player.dart';
 
@@ -103,7 +105,7 @@ class _WelcomePage extends State<WelcomePage> {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 50),
                   child: TextButton(
                       onPressed: (){
-                        Navigator.of(context).pushNamed('/app');
+                        Navigator.of(context).pushNamedAndRemoveUntil("/app", (route) => false);
                       },
                       child: Text("Guest mode",style: GoogleFonts.heebo(
                         color: Colors.white,
