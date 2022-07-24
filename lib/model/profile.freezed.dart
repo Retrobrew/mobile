@@ -172,7 +172,7 @@ class __$$_ProfileCopyWithImpl<$Res> extends _$ProfileCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Profile implements _Profile {
   _$_Profile(
-      {this.uuid = "123",
+      {required this.uuid,
       required this.username,
       this.picture,
       this.sex,
@@ -184,7 +184,6 @@ class _$_Profile implements _Profile {
       _$$_ProfileFromJson(json);
 
   @override
-  @JsonKey()
   final String uuid;
 // TODO: attendre amé qu'elle change les dto pour remettre en required
   @override
@@ -247,7 +246,7 @@ class _$_Profile implements _Profile {
 
 abstract class _Profile implements Profile {
   factory _Profile(
-      {final String uuid,
+      {required final String uuid,
       required final String username,
       final String? picture,
       final String? sex,

@@ -19,38 +19,56 @@ mixin _$GroupsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
     required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
     required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,7 +154,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
     required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
   }) {
     return onGetAll(token);
   }
@@ -145,7 +166,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
   }) {
     return onGetAll?.call(token);
   }
@@ -154,7 +178,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
     required TResult orElse(),
   }) {
     if (onGetAll != null) {
@@ -167,7 +194,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
     required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
   }) {
     return onGetAll(this);
   }
@@ -176,7 +206,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
   }) {
     return onGetAll?.call(this);
   }
@@ -185,7 +218,10 @@ class _$onGetAll implements onGetAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
     required TResult orElse(),
   }) {
     if (onGetAll != null) {
@@ -201,6 +237,158 @@ abstract class onGetAll implements GroupsEvent {
   String? get token => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$onGetAllCopyWith<_$onGetAll> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onGetMyGroupsCopyWith<$Res> {
+  factory _$$onGetMyGroupsCopyWith(
+          _$onGetMyGroups value, $Res Function(_$onGetMyGroups) then) =
+      __$$onGetMyGroupsCopyWithImpl<$Res>;
+  $Res call({String? token});
+}
+
+/// @nodoc
+class __$$onGetMyGroupsCopyWithImpl<$Res>
+    extends _$GroupsEventCopyWithImpl<$Res>
+    implements _$$onGetMyGroupsCopyWith<$Res> {
+  __$$onGetMyGroupsCopyWithImpl(
+      _$onGetMyGroups _value, $Res Function(_$onGetMyGroups) _then)
+      : super(_value, (v) => _then(v as _$onGetMyGroups));
+
+  @override
+  _$onGetMyGroups get _value => super._value as _$onGetMyGroups;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+  }) {
+    return _then(_$onGetMyGroups(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onGetMyGroups implements onGetMyGroups {
+  const _$onGetMyGroups(this.token);
+
+  @override
+  final String? token;
+
+  @override
+  String toString() {
+    return 'GroupsEvent.onGetMyGroups(token: $token)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onGetMyGroups &&
+            const DeepCollectionEquality().equals(other.token, token));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$onGetMyGroupsCopyWith<_$onGetMyGroups> get copyWith =>
+      __$$onGetMyGroupsCopyWithImpl<_$onGetMyGroups>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
+    required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
+  }) {
+    return onGetMyGroups(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+  }) {
+    return onGetMyGroups?.call(token);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onGetMyGroups != null) {
+      return onGetMyGroups(token);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
+    required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
+  }) {
+    return onGetMyGroups(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+  }) {
+    return onGetMyGroups?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onGetMyGroups != null) {
+      return onGetMyGroups(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onGetMyGroups implements GroupsEvent {
+  const factory onGetMyGroups(final String? token) = _$onGetMyGroups;
+
+  String? get token => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$onGetMyGroupsCopyWith<_$onGetMyGroups> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -279,7 +467,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
     required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
   }) {
     return onGetPosts(token, uuid);
   }
@@ -288,7 +479,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
   }) {
     return onGetPosts?.call(token, uuid);
   }
@@ -297,7 +491,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
     TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
     required TResult orElse(),
   }) {
     if (onGetPosts != null) {
@@ -310,7 +507,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
     required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
   }) {
     return onGetPosts(this);
   }
@@ -319,7 +519,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
   }) {
     return onGetPosts?.call(this);
   }
@@ -328,7 +531,10 @@ class _$onGetPosts implements onGetPosts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
     TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
     required TResult orElse(),
   }) {
     if (onGetPosts != null) {
@@ -346,6 +552,326 @@ abstract class onGetPosts implements GroupsEvent {
   String get uuid => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$$onGetPostsCopyWith<_$onGetPosts> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onLeaveCopyWith<$Res> {
+  factory _$$onLeaveCopyWith(_$onLeave value, $Res Function(_$onLeave) then) =
+      __$$onLeaveCopyWithImpl<$Res>;
+  $Res call({String token, String uuid});
+}
+
+/// @nodoc
+class __$$onLeaveCopyWithImpl<$Res> extends _$GroupsEventCopyWithImpl<$Res>
+    implements _$$onLeaveCopyWith<$Res> {
+  __$$onLeaveCopyWithImpl(_$onLeave _value, $Res Function(_$onLeave) _then)
+      : super(_value, (v) => _then(v as _$onLeave));
+
+  @override
+  _$onLeave get _value => super._value as _$onLeave;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+    Object? uuid = freezed,
+  }) {
+    return _then(_$onLeave(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onLeave implements onLeave {
+  const _$onLeave(this.token, this.uuid);
+
+  @override
+  final String token;
+  @override
+  final String uuid;
+
+  @override
+  String toString() {
+    return 'GroupsEvent.onLeave(token: $token, uuid: $uuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onLeave &&
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality().equals(other.uuid, uuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(uuid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$onLeaveCopyWith<_$onLeave> get copyWith =>
+      __$$onLeaveCopyWithImpl<_$onLeave>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
+    required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
+  }) {
+    return onLeave(token, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+  }) {
+    return onLeave?.call(token, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onLeave != null) {
+      return onLeave(token, uuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
+    required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
+  }) {
+    return onLeave(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+  }) {
+    return onLeave?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onLeave != null) {
+      return onLeave(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onLeave implements GroupsEvent {
+  const factory onLeave(final String token, final String uuid) = _$onLeave;
+
+  String get token => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$onLeaveCopyWith<_$onLeave> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$onJoinCopyWith<$Res> {
+  factory _$$onJoinCopyWith(_$onJoin value, $Res Function(_$onJoin) then) =
+      __$$onJoinCopyWithImpl<$Res>;
+  $Res call({String token, String uuid});
+}
+
+/// @nodoc
+class __$$onJoinCopyWithImpl<$Res> extends _$GroupsEventCopyWithImpl<$Res>
+    implements _$$onJoinCopyWith<$Res> {
+  __$$onJoinCopyWithImpl(_$onJoin _value, $Res Function(_$onJoin) _then)
+      : super(_value, (v) => _then(v as _$onJoin));
+
+  @override
+  _$onJoin get _value => super._value as _$onJoin;
+
+  @override
+  $Res call({
+    Object? token = freezed,
+    Object? uuid = freezed,
+  }) {
+    return _then(_$onJoin(
+      token == freezed
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+      uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$onJoin implements onJoin {
+  const _$onJoin(this.token, this.uuid);
+
+  @override
+  final String token;
+  @override
+  final String uuid;
+
+  @override
+  String toString() {
+    return 'GroupsEvent.onJoin(token: $token, uuid: $uuid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$onJoin &&
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality().equals(other.uuid, uuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(uuid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$onJoinCopyWith<_$onJoin> get copyWith =>
+      __$$onJoinCopyWithImpl<_$onJoin>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? token) onGetAll,
+    required TResult Function(String? token) onGetMyGroups,
+    required TResult Function(String token, String uuid) onGetPosts,
+    required TResult Function(String token, String uuid) onLeave,
+    required TResult Function(String token, String uuid) onJoin,
+  }) {
+    return onJoin(token, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+  }) {
+    return onJoin?.call(token, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? token)? onGetAll,
+    TResult Function(String? token)? onGetMyGroups,
+    TResult Function(String token, String uuid)? onGetPosts,
+    TResult Function(String token, String uuid)? onLeave,
+    TResult Function(String token, String uuid)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onJoin != null) {
+      return onJoin(token, uuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(onGetAll value) onGetAll,
+    required TResult Function(onGetMyGroups value) onGetMyGroups,
+    required TResult Function(onGetPosts value) onGetPosts,
+    required TResult Function(onLeave value) onLeave,
+    required TResult Function(onJoin value) onJoin,
+  }) {
+    return onJoin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+  }) {
+    return onJoin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(onGetAll value)? onGetAll,
+    TResult Function(onGetMyGroups value)? onGetMyGroups,
+    TResult Function(onGetPosts value)? onGetPosts,
+    TResult Function(onLeave value)? onLeave,
+    TResult Function(onJoin value)? onJoin,
+    required TResult orElse(),
+  }) {
+    if (onJoin != null) {
+      return onJoin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class onJoin implements GroupsEvent {
+  const factory onJoin(final String token, final String uuid) = _$onJoin;
+
+  String get token => throw _privateConstructorUsedError;
+  String get uuid => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$onJoinCopyWith<_$onJoin> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

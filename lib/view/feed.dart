@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:retrobrew/view/post_view.dart';
 import 'package:retrobrew/view/sign_in_request.dart';
 import '../bloc/feeds_bloc.dart';
+import '../model/post.dart';
 import '../ui/feed/block_post.dart';
 
 class Feed extends StatelessWidget {
@@ -20,46 +21,55 @@ class Feed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FeedsBloc(FeedsApiProvider(Dio()), PostApiProvider(Dio()))..add(FeedsEvent.onFetch(accessToken)),
+      create: (context) =>
+          FeedsBloc(FeedsApiProvider(Dio()), PostApiProvider(Dio()))
+            ..add(FeedsEvent.onFetch(accessToken)),
       child: Scaffold(
-          body:
-          BlocConsumer<FeedsBloc, FeedsState>(builder: (context, state) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("My feed"),
-              ),
-                body: CustomScrollView(slivers: [
-                  SliverList(
-                      delegate: SliverChildListDelegate(List.generate(1, (index) => QuickGroup()))
-                  ),
-                  SliverList(
-                      delegate: SliverChildListDelegate(List.generate(accessToken != null ? 1 : 0, (index) => AddPost(token: accessToken!)))
-                  ),
-                  SliverList(
-                    delegate: SliverChildListDelegate(List.generate(state.feeds.length, (index) {
-                      return BlockPost(
-                        disableLike: accessToken == null,
-                        onTap: () {
-                          if(accessToken == null) {
-                            showModalBottomSheet(
-                                context: context, builder: (context) => SignInRequest());
-                          }else {
-                            Navigator.push(context,
-                                MaterialPageRoute(
-                                    builder: (ctx) => PostView(post: state.feeds[index])));
-                          }
-                        },
-                          post: state.feeds[index]
-                      );
-                    })),
-                  ),
-                ]));
-          }, listener: (context, state) {
+          body: BlocConsumer<FeedsBloc, FeedsState>(
+              builder: (context, state) {
+                return Scaffold(
+                    appBar: AppBar(
+                      title: const Text("My feed"),
+                    ),
+                    body: CustomScrollView(slivers: [
+                      SliverList(
+                          delegate: SliverChildListDelegate(
+                              List.generate(1, (index) => QuickGroup()))),
+                      SliverList(
+                          delegate: SliverChildListDelegate(List.generate(
+                              accessToken != null ? 1 : 0,
+                              (index) => AddPost(
+                                    onClick: (Post post) {
 
-          })
-      ),
+                                      context.read<FeedsBloc>().add(
+                                          FeedsEvent.onAdd(
+                                              accessToken!, post));
+                                    },
+                                  )))),
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                            List.generate(state.feeds.length, (index) {
+                          return BlockPost(
+                              disableLike: accessToken == null,
+                              onTap: () {
+                                if (accessToken == null) {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) => SignInRequest());
+                                } else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (ctx) => PostView(
+                                              post: state.feeds[index])));
+                                }
+                              },
+                              post: state.feeds[index]);
+                        })),
+                      ),
+                    ]));
+              },
+              listener: (context, state) {})),
     );
   }
-
-
 }

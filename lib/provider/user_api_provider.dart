@@ -15,6 +15,7 @@ abstract class UserApiProvider {
 
   factory UserApiProvider(Dio dio, {String baseUrl}) = _UserApiProvider;
 
+  @FormUrlEncoded()
   @POST('/')
   @Headers(<String, dynamic>{
     "Content-Type" : "application/json"

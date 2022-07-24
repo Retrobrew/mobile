@@ -107,7 +107,7 @@ class _PostView extends State<PostView> {
 
     setState(() => _loading = true);
 
-    String groupName = widget.post.postedIn!.name != null ? (widget.post.postedIn!.name != "home" ? widget.post.postedIn!.name! : "My feed") : "Missigno";
+    String groupName = widget.post.postedIn!.name != null ? (widget.post.postedIn!.name != "home" ? widget.post.postedIn!.name! : "My feed") : "Missingno";
 
     return Scaffold(
         bottomNavigationBar: SafeArea(child: pushCommentButton()),

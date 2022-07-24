@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:badges/badges.dart';
 import 'package:retrobrew/bloc/user_bloc.dart';
+import 'package:retrobrew/provider/discovery_view.dart';
 import 'package:retrobrew/view/feed.dart';
 import 'package:retrobrew/view/my_groups.dart';
 import 'package:retrobrew/view/profile_view.dart';
@@ -43,6 +44,8 @@ class _ApplicationState extends State<Application> {
       return token == null ? const SignInRequest() : const ProfileView();
     } else if (selectedIndex == 1) {
       return token == null ? const SignInRequest() : MyGroups();
+    } else if (selectedIndex == 2) {
+      return token == null ? const SignInRequest() : const DiscoveryView();
     }
 
     return Feed(accessToken: token);

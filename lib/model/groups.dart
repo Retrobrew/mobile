@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:retrobrew/model/user.dart';
+import 'package:retrobrew/model/user_group.dart';
 
 part 'groups.freezed.dart';
 part 'groups.g.dart';
@@ -14,7 +15,7 @@ class Groups with _$Groups {
     String? picture,
     bool? isProject,
     String? description,
-    List<String>? members, // TODO
+    List<UserGroup>? members,
     bool? creator
   }) = _Groups;
 
