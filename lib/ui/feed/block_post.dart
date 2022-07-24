@@ -54,6 +54,14 @@ class _BlockPostState extends State<BlockPost> {
       groupName = widget.post.postedIn!.name!;
     }
 
+    media() {
+      if(widget.post.media != null) {
+        return Image.network("https://api.retrobrew.fr/posts/${widget.post.uuid}/media");
+      }
+
+      return Container();
+    }
+
     return InkWell(
         onTap: ()
         {
@@ -79,6 +87,7 @@ class _BlockPostState extends State<BlockPost> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      media(),
                       Container(
                           margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                           width: double.infinity,
