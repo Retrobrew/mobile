@@ -7,7 +7,7 @@ part of 'profile.dart';
 // **************************************************************************
 
 _$_Profile _$$_ProfileFromJson(Map<String, dynamic> json) => _$_Profile(
-      uuid: json['uuid'] as String? ?? "123",
+      uuid: json['uuid'] as String,
       username: json['username'] as String,
       picture: json['picture'] as String?,
       sex: json['sex'] as String?,

@@ -22,7 +22,7 @@ class MyFriends extends StatelessWidget {
     return CircleAvatar(
         radius: 65,
         backgroundImage: NetworkImage(
-            profile.picture!)
+            "https://api.retrobrew.fr/users/${profile.uuid}/avatar")
       );
   }
 

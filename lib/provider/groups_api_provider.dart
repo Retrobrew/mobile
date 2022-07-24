@@ -21,4 +21,10 @@ abstract class GroupsApiProvider {
   @GET('https://api.retrobrew.fr/feeds/group/{uuid}')
   Future<List<Post>> getPosts(@Path('uuid') String? uuid, @Header("Authorization") String token);
 
+  @POST('/{uuid}/quit')
+  Future<void> leave(@Path('uuid') String uuid, @Header("Authorization") String token);
+
+  @POST('/{uuid}/join')
+  Future<void> join(@Path('uuid') String uuid, @Header("Authorization") String token);
+
 }

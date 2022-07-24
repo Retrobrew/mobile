@@ -26,6 +26,7 @@ mixin _$Authentication {
   dynamic get password => throw _privateConstructorUsedError;
   dynamic get sexe => throw _privateConstructorUsedError;
   dynamic get country => throw _privateConstructorUsedError;
+  dynamic get uuid => throw _privateConstructorUsedError;
   String? get access_token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $AuthenticationCopyWith<$Res> {
       dynamic password,
       dynamic sexe,
       dynamic country,
+      dynamic uuid,
       String? access_token});
 }
 
@@ -66,6 +68,7 @@ class _$AuthenticationCopyWithImpl<$Res>
     Object? password = freezed,
     Object? sexe = freezed,
     Object? country = freezed,
+    Object? uuid = freezed,
     Object? access_token = freezed,
   }) {
     return _then(_value.copyWith(
@@ -93,6 +96,10 @@ class _$AuthenticationCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      uuid: uuid == freezed
+          ? _value.uuid
+          : uuid // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       access_token: access_token == freezed
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
@@ -115,6 +122,7 @@ abstract class _$$_AuthenticationCopyWith<$Res>
       dynamic password,
       dynamic sexe,
       dynamic country,
+      dynamic uuid,
       String? access_token});
 }
 
@@ -137,6 +145,7 @@ class __$$_AuthenticationCopyWithImpl<$Res>
     Object? password = freezed,
     Object? sexe = freezed,
     Object? country = freezed,
+    Object? uuid = freezed,
     Object? access_token = freezed,
   }) {
     return _then(_$_Authentication(
@@ -149,6 +158,7 @@ class __$$_AuthenticationCopyWithImpl<$Res>
       password: password == freezed ? _value.password : password,
       sexe: sexe == freezed ? _value.sexe : sexe,
       country: country == freezed ? _value.country : country,
+      uuid: uuid == freezed ? _value.uuid : uuid,
       access_token: access_token == freezed
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
@@ -167,6 +177,7 @@ class _$_Authentication implements _Authentication {
       this.password,
       this.sexe,
       this.country,
+      this.uuid,
       this.access_token});
 
   factory _$_Authentication.fromJson(Map<String, dynamic> json) =>
@@ -185,11 +196,13 @@ class _$_Authentication implements _Authentication {
   @override
   final dynamic country;
   @override
+  final dynamic uuid;
+  @override
   final String? access_token;
 
   @override
   String toString() {
-    return 'Authentication(email: $email, username: $username, dateOfBirth: $dateOfBirth, password: $password, sexe: $sexe, country: $country, access_token: $access_token)';
+    return 'Authentication(email: $email, username: $username, dateOfBirth: $dateOfBirth, password: $password, sexe: $sexe, country: $country, uuid: $uuid, access_token: $access_token)';
   }
 
   @override
@@ -204,6 +217,7 @@ class _$_Authentication implements _Authentication {
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality().equals(other.sexe, sexe) &&
             const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality().equals(other.uuid, uuid) &&
             const DeepCollectionEquality()
                 .equals(other.access_token, access_token));
   }
@@ -218,6 +232,7 @@ class _$_Authentication implements _Authentication {
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(sexe),
       const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(uuid),
       const DeepCollectionEquality().hash(access_token));
 
   @JsonKey(ignore: true)
@@ -239,6 +254,7 @@ abstract class _Authentication implements Authentication {
       final dynamic password,
       final dynamic sexe,
       final dynamic country,
+      final dynamic uuid,
       final String? access_token}) = _$_Authentication;
 
   factory _Authentication.fromJson(Map<String, dynamic> json) =
@@ -256,6 +272,8 @@ abstract class _Authentication implements Authentication {
   dynamic get sexe => throw _privateConstructorUsedError;
   @override
   dynamic get country => throw _privateConstructorUsedError;
+  @override
+  dynamic get uuid => throw _privateConstructorUsedError;
   @override
   String? get access_token => throw _privateConstructorUsedError;
   @override

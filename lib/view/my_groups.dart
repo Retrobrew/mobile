@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:retrobrew/bloc/user_bloc.dart';
 import 'package:retrobrew/provider/groups_api_provider.dart';
 import 'package:retrobrew/ui/groups/card_background_image.dart';
 
@@ -18,7 +19,7 @@ class MyGroups extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => GroupsBloc(GroupsApiProvider(Dio()))
-        ..add(GroupsEvent.onGetAll(
+        ..add(GroupsEvent.onGetMyGroups(
             authState.state.authentication!.access_token!)),
       child: BlocBuilder<GroupsBloc, GroupsState>(
         builder: (context, state) {
@@ -34,7 +35,7 @@ class MyGroups extends StatelessWidget {
                     return CardBackgroundImage(
                       title: "${state.groups[index].creator! ? "👑" : "👥"} ${state.groups[index].name!}",
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => GroupsFeed(group: state.groups[index], token: authState.state.authentication!.access_token!)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => GroupsFeed(group: state.groups[index], token: authState.state.authentication!.access_token!, userUuid: authState.state.authentication!.uuid)));
                       },
                       image:
                           "https://api.lorem.space/image/game?w=640&h=480&${DateTime.now().millisecondsSinceEpoch.toString()}",
