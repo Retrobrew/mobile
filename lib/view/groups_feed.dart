@@ -52,7 +52,7 @@ class GroupsFeedState extends State<GroupsFeed>
       vsync: this,
     );
 
-    isJoin = widget.group.members!
+    isJoin = widget.group.members != null && widget.group.members!
         .where((element) => element.user == widget.userUuid)
         .isEmpty;
   }
@@ -136,7 +136,7 @@ class GroupsFeedState extends State<GroupsFeed>
                     expandedHeight: 150.0,
                     flexibleSpace: FlexibleSpaceBar(
                       background: Image.network(
-                          "https://i.ytimg.com/vi/Wcp_ug1TsO0/maxresdefault.jpg",
+                          "https://api.retrobrew.fr/groups/${widget.group.uuid}/banner",
                           fit: BoxFit.cover),
                     ),
                   ),
