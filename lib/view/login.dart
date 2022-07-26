@@ -34,6 +34,9 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    controllers["username"]!.text = "cedric.leprohon@yahoo.fr";
+    controllers["password"]!.text = "123456";
+
     var we = MediaQuery.of(context).size.width;
     var he = MediaQuery.of(context).size.height;
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(

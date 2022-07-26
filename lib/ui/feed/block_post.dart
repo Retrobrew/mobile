@@ -56,7 +56,7 @@ class _BlockPostState extends State<BlockPost> {
 
     media() {
       if(widget.post.media != null) {
-        return Image.network("https://api.retrobrew.fr/posts/${widget.post.uuid}/media");
+        return Center(child: Image.network("https://api.retrobrew.fr/posts/${widget.post.uuid}/media"));
       }
 
       return Container();
@@ -92,7 +92,7 @@ class _BlockPostState extends State<BlockPost> {
                           margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
                           width: double.infinity,
                           child: Text(
-                              widget.post.content!, textAlign: TextAlign.left))
+                              widget.post.content!, textAlign: TextAlign.justify))
                     ],
                   ),
                   Row(

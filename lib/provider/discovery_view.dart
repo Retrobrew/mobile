@@ -32,12 +32,12 @@ class DiscoveryView extends StatelessWidget {
                     itemCount: state.groups.length,
                     itemBuilder: (context, index) {
                       return CardBackgroundImage(
-                        title: "${state.groups[index].creator! ? "👑" : "👥"} ${state.groups[index].name!}",
+                        title: "${state.groups[index].createdBy!.uuid ==  authState.state.authentication!.uuid ? "👑" : "👥"} ${state.groups[index].name!}",
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => GroupsFeed(group: state.groups[index], token: authState.state.authentication!.access_token!, userUuid: authState.state.authentication!.uuid)));
                         },
                         image:
-                        "https://api.lorem.space/image/game?w=640&h=480&${DateTime.now().millisecondsSinceEpoch.toString()}",
+                        "https://api.retrobrew.fr/groups/${state.groups[index].uuid}/banner",
                       );
                     },
                   ));

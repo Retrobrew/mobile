@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.retrobrew.mobile.retrobrew">
-   <application
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
         android:label="retrobrew"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">

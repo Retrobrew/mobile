@@ -28,10 +28,14 @@ pipeline {
         stage('Build for Android') {
             steps {
                 script {
-                    nodejs(nodeJSInstallationName: 'nodejs'){
-                        def docker = tool 'docker-agent';
-                        sh('chmod 777 scripts/flutter_build.sh');
-                        sh('docker run --rm -i -v /var/lib/docker/volumes/jenkins_home/_data/`(pwd | awk -F\'jenkins_home\' \'{printf \$2}\')`:/app -w /app cirrusci/flutter sh scripts/flutter_build.sh');
+                    withCredentials([file(credentialsId: 'RETROBREW_MOBILE_KEYSTORE', variable: 'KEYSTORE'), file(credentialsId: 'RETROBREW_MOBILE_SIGN_KEY', variable: 'KEY')]){
+                        nodejs(nodeJSInstallationName: 'nodejs'){
+                            sh "cp -f \"${KEYSTORE}\" \"myCustom-Keystore.jks\""
+                            writeFile file: 'android/key.properties', text: readFile(KEY)
+                            def docker = tool 'docker-agent';
+                            sh('chmod 777 scripts/flutter_build.sh');
+                            sh('docker run --rm -i -v /var/lib/docker/volumes/jenkins_home/_data/`(pwd | awk -F\'jenkins_home\' \'{printf \$2}\')`:/app -w /app cirrusci/flutter sh scripts/flutter_build.sh');
+                        }
                     }
                 }
             }

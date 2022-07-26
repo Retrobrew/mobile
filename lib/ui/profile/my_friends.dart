@@ -20,7 +20,7 @@ class MyFriends extends StatelessWidget {
     }
 
     return CircleAvatar(
-        radius: 65,
+        radius: 25,
         backgroundImage: NetworkImage(
             "https://api.retrobrew.fr/users/${profile.uuid}/avatar")
       );
@@ -52,7 +52,7 @@ class MyFriends extends StatelessWidget {
               Text(profile.username),
               Text(profile.country ?? "Retroland"),
               Text(profile.sex ?? "Demiboy"),
-              _removeButton()
+              _removeButton(),
             ],
           ),
         ));

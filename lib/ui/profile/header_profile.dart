@@ -21,7 +21,7 @@ class HeaderProfile extends StatelessWidget {
     }
 
     return CircleAvatar(
-        radius: 65,
+        radius: 55,
         backgroundImage: NetworkImage(
         "https://api.retrobrew.fr/users/${profile.uuid}/avatar"));
   }
