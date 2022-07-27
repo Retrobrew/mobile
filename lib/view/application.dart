@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,6 +60,8 @@ class _ApplicationState extends State<Application> {
     var access = BlocProvider.of<AuthenticationBloc>(context);
 
     if(access.state.authentication?.access_token != null) {
+      userState.add(UserEvent.onGetMyProfile(access.state.authentication!.access_token!));
+
       userState.add(UserEvent.onGetFriendsRequestReceived(access.state.authentication!.access_token!));
     }
 
@@ -144,7 +148,7 @@ class _ApplicationState extends State<Application> {
                       icon: LineIcons.user,
                       leading: Column(
                         children: [
-                          _picture(userState.state.friendsRequest?.length ?? 0, userState.state.profile?.picture, state.authentication?.username ?? "Guest"),
+                          _picture(userState.state.friendsRequest?.length ?? 0, state.authentication!.picture, state.authentication?.username ?? "Guest", state.authentication?.uuid),
                         ],
                       ),
                       text: state.authentication?.username ?? "Guest",
@@ -166,8 +170,9 @@ class _ApplicationState extends State<Application> {
     );
   }
 
-  Widget _avatar(String? picture, String? username) {
-    if(picture == null) {
+  Widget _avatar(String? picture, String? username, String uuid) {
+    print(picture);
+    if(username == "Guest") {
       return TextAvatar(
         shape: Shape.Circular,
         upperCase: true,
@@ -180,12 +185,12 @@ class _ApplicationState extends State<Application> {
     return CircleAvatar(
       radius: 12,
       backgroundImage: NetworkImage(
-        picture
+          "https://api.retrobrew.fr/users/$uuid/avatar"
       ),
     );
   }
 
-  _picture(int i, String? picture, String? username) {
+  _picture(int i, String? picture, String? username, String? uuid) {
     if(i > 0) {
       return Badge(
         badgeColor: Colors.teal.shade100,
@@ -196,13 +201,13 @@ class _ApplicationState extends State<Application> {
           style: TextStyle(color: Colors.teal.shade900),
         ),
         child:
-          _avatar(picture, username)
+          _avatar(picture, username, uuid ?? "")
       );
     }
 
     return CircleAvatar(
       radius: 12,
-      child: _avatar(picture, username)
+      child: _avatar(picture, username, uuid ?? "")
     );
 
 

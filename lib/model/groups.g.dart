@@ -16,7 +16,7 @@ _$_Groups _$$_GroupsFromJson(Map<String, dynamic> json) => _$_Groups(
       isProject: json['isProject'] as bool?,
       description: json['description'] as String?,
       members: (json['members'] as List<dynamic>?)
-          ?.map((e) => UserGroup.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
       creator: json['creator'] as bool?,
     );

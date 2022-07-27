@@ -89,9 +89,9 @@ class _ProfileViewState extends State<ProfileView> {
             )),
             SliverList(
                 delegate: SliverChildListDelegate(List.generate(
-                    friendsRequest.isNotEmpty
+                    widget.profile == null && friendsRequest.isNotEmpty
                         ? friendsRequest.length
-                        : (widget.profile != null ? 0 : 1), (index) {
+                    : 0, (index) {
               if (!friendsRequest.isNotEmpty) {
                 return const Center(child: Text("You don't have any request"));
               }

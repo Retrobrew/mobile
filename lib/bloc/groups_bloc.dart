@@ -22,7 +22,7 @@ class GroupsBloc extends Bloc<GroupsEvent, GroupsState> {
     on<GroupsEvent>((event, emit) async {
       await event.map<FutureOr<void>>(
           onGetMyGroups: (onGetMyGroups value) async {
-        //List<Groups> groups = await _groupsApiProvider.getMyGroups("Bearer ${value.token}");
+        List<Groups> groups = await _groupsApiProvider.getMyGroups("Bearer ${value.token}");
 
         List<Groups> mockedGroup = List.of([
           Groups(
@@ -44,7 +44,7 @@ class GroupsBloc extends Bloc<GroupsEvent, GroupsState> {
               creator: true)
         ]);
 
-        emit(GroupsState.initial().copyWith(groups: mockedGroup));
+        emit(GroupsState.initial().copyWith(groups: groups));
       }, onGetPosts: (onGetPosts value) async {
         List<Post> posts = await _groupsApiProvider.getPosts(
             value.uuid, "Bearer ${value.token}");

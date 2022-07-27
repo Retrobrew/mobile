@@ -38,7 +38,7 @@ class MyGroups extends StatelessWidget {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => GroupsFeed(group: state.groups[index], token: authState.state.authentication!.access_token!, userUuid: authState.state.authentication!.uuid)));
                       },
                       image:
-                          "https://api.lorem.space/image/game?w=640&h=480&${DateTime.now().millisecondsSinceEpoch.toString()}",
+                          "https://api.retrobrew.fr/groups/${state.groups[index].uuid}/banner",
                     );
                   },
                 )),

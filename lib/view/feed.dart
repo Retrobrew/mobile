@@ -32,9 +32,9 @@ class Feed extends StatelessWidget {
                       title: const Text("My feed"),
                     ),
                     body: CustomScrollView(slivers: [
-                      SliverList(
+                      /*SliverList(
                           delegate: SliverChildListDelegate(
-                              List.generate(1, (index) => QuickGroup()))),
+                              List.generate(1, (index) => QuickGroup()))),*/
                       SliverList(
                           delegate: SliverChildListDelegate(List.generate(
                               accessToken != null ? 1 : 0,

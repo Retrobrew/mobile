@@ -7,7 +7,8 @@ part 'authentication.g.dart';
 class Authentication with _$Authentication {
   factory Authentication({
     String? email, username, dateOfBirth, password, sexe, country, uuid,
-    String? access_token
+    String? access_token,
+    String? picture
   }) = _Authentication;
 
   factory Authentication.fromJson(Map<String, dynamic> json) => _$AuthenticationFromJson(json);

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart' hide Headers;
 import 'package:retrobrew/model/friend_request.dart';
+import 'package:retrobrew/model/user.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../model/authentication.dart';
@@ -39,5 +40,8 @@ abstract class UserApiProvider {
 
   @GET('https://api.retrobrew.fr/my/friends')
   Future<List<Profile>> getMyFriends(@Header("Authorization") String token);
+
+  @GET('/{uuid}/friends')
+  Future<List<Profile>> getUserFriends(@Header("Authorization") String token, @Path("uuid") String uuid);
 
 }

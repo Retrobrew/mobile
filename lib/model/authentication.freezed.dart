@@ -28,6 +28,7 @@ mixin _$Authentication {
   dynamic get country => throw _privateConstructorUsedError;
   dynamic get uuid => throw _privateConstructorUsedError;
   String? get access_token => throw _privateConstructorUsedError;
+  String? get picture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,8 @@ abstract class $AuthenticationCopyWith<$Res> {
       dynamic sexe,
       dynamic country,
       dynamic uuid,
-      String? access_token});
+      String? access_token,
+      String? picture});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$AuthenticationCopyWithImpl<$Res>
     Object? country = freezed,
     Object? uuid = freezed,
     Object? access_token = freezed,
+    Object? picture = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -104,6 +107,10 @@ class _$AuthenticationCopyWithImpl<$Res>
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
               as String?,
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -123,7 +130,8 @@ abstract class _$$_AuthenticationCopyWith<$Res>
       dynamic sexe,
       dynamic country,
       dynamic uuid,
-      String? access_token});
+      String? access_token,
+      String? picture});
 }
 
 /// @nodoc
@@ -147,6 +155,7 @@ class __$$_AuthenticationCopyWithImpl<$Res>
     Object? country = freezed,
     Object? uuid = freezed,
     Object? access_token = freezed,
+    Object? picture = freezed,
   }) {
     return _then(_$_Authentication(
       email: email == freezed
@@ -163,6 +172,10 @@ class __$$_AuthenticationCopyWithImpl<$Res>
           ? _value.access_token
           : access_token // ignore: cast_nullable_to_non_nullable
               as String?,
+      picture: picture == freezed
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -178,7 +191,8 @@ class _$_Authentication implements _Authentication {
       this.sexe,
       this.country,
       this.uuid,
-      this.access_token});
+      this.access_token,
+      this.picture});
 
   factory _$_Authentication.fromJson(Map<String, dynamic> json) =>
       _$$_AuthenticationFromJson(json);
@@ -199,10 +213,12 @@ class _$_Authentication implements _Authentication {
   final dynamic uuid;
   @override
   final String? access_token;
+  @override
+  final String? picture;
 
   @override
   String toString() {
-    return 'Authentication(email: $email, username: $username, dateOfBirth: $dateOfBirth, password: $password, sexe: $sexe, country: $country, uuid: $uuid, access_token: $access_token)';
+    return 'Authentication(email: $email, username: $username, dateOfBirth: $dateOfBirth, password: $password, sexe: $sexe, country: $country, uuid: $uuid, access_token: $access_token, picture: $picture)';
   }
 
   @override
@@ -219,7 +235,8 @@ class _$_Authentication implements _Authentication {
             const DeepCollectionEquality().equals(other.country, country) &&
             const DeepCollectionEquality().equals(other.uuid, uuid) &&
             const DeepCollectionEquality()
-                .equals(other.access_token, access_token));
+                .equals(other.access_token, access_token) &&
+            const DeepCollectionEquality().equals(other.picture, picture));
   }
 
   @JsonKey(ignore: true)
@@ -233,7 +250,8 @@ class _$_Authentication implements _Authentication {
       const DeepCollectionEquality().hash(sexe),
       const DeepCollectionEquality().hash(country),
       const DeepCollectionEquality().hash(uuid),
-      const DeepCollectionEquality().hash(access_token));
+      const DeepCollectionEquality().hash(access_token),
+      const DeepCollectionEquality().hash(picture));
 
   @JsonKey(ignore: true)
   @override
@@ -255,7 +273,8 @@ abstract class _Authentication implements Authentication {
       final dynamic sexe,
       final dynamic country,
       final dynamic uuid,
-      final String? access_token}) = _$_Authentication;
+      final String? access_token,
+      final String? picture}) = _$_Authentication;
 
   factory _Authentication.fromJson(Map<String, dynamic> json) =
       _$_Authentication.fromJson;
@@ -276,6 +295,8 @@ abstract class _Authentication implements Authentication {
   dynamic get uuid => throw _privateConstructorUsedError;
   @override
   String? get access_token => throw _privateConstructorUsedError;
+  @override
+  String? get picture => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationCopyWith<_$_Authentication> get copyWith =>

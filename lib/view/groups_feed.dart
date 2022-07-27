@@ -52,9 +52,13 @@ class GroupsFeedState extends State<GroupsFeed>
       vsync: this,
     );
 
+    print("init");
+
+    print(widget.group);
+
     isJoin = widget.group.members != null && widget.group.members!
-        .where((element) => element.user == widget.userUuid)
-        .isEmpty;
+        .where((element) => element.uuid == widget.userUuid)
+        .isNotEmpty;
   }
 
   toggleAddPost() {

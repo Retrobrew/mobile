@@ -26,7 +26,7 @@ mixin _$Groups {
   String? get picture => throw _privateConstructorUsedError;
   bool? get isProject => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  List<UserGroup>? get members => throw _privateConstructorUsedError;
+  List<User>? get members => throw _privateConstructorUsedError;
   bool? get creator => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $GroupsCopyWith<$Res> {
       String? picture,
       bool? isProject,
       String? description,
-      List<UserGroup>? members,
+      List<User>? members,
       bool? creator});
 
   $UserCopyWith<$Res>? get createdBy;
@@ -98,7 +98,7 @@ class _$GroupsCopyWithImpl<$Res> implements $GroupsCopyWith<$Res> {
       members: members == freezed
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<UserGroup>?,
+              as List<User>?,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -130,7 +130,7 @@ abstract class _$$_GroupsCopyWith<$Res> implements $GroupsCopyWith<$Res> {
       String? picture,
       bool? isProject,
       String? description,
-      List<UserGroup>? members,
+      List<User>? members,
       bool? creator});
 
   @override
@@ -185,7 +185,7 @@ class __$$_GroupsCopyWithImpl<$Res> extends _$GroupsCopyWithImpl<$Res>
       members: members == freezed
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<UserGroup>?,
+              as List<User>?,
       creator: creator == freezed
           ? _value.creator
           : creator // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ class _$_Groups implements _Groups {
       this.picture,
       this.isProject,
       this.description,
-      final List<UserGroup>? members,
+      final List<User>? members,
       this.creator})
       : _members = members;
 
@@ -223,9 +223,9 @@ class _$_Groups implements _Groups {
   final bool? isProject;
   @override
   final String? description;
-  final List<UserGroup>? _members;
+  final List<User>? _members;
   @override
-  List<UserGroup>? get members {
+  List<User>? get members {
     final value = _members;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -288,7 +288,7 @@ abstract class _Groups implements Groups {
       final String? picture,
       final bool? isProject,
       final String? description,
-      final List<UserGroup>? members,
+      final List<User>? members,
       final bool? creator}) = _$_Groups;
 
   factory _Groups.fromJson(Map<String, dynamic> json) = _$_Groups.fromJson;
@@ -306,7 +306,7 @@ abstract class _Groups implements Groups {
   @override
   String? get description => throw _privateConstructorUsedError;
   @override
-  List<UserGroup>? get members => throw _privateConstructorUsedError;
+  List<User>? get members => throw _privateConstructorUsedError;
   @override
   bool? get creator => throw _privateConstructorUsedError;
   @override

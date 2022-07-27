@@ -22,7 +22,7 @@ class BlockComment extends StatelessWidget {
 
     return CircleAvatar(
       backgroundImage: NetworkImage(
-        post.author!.picture!,
+        "https://api.retrobrew.fr/users/${post.author!.uuid}/avatar",
       ),
     );
   }

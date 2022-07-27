@@ -15,7 +15,7 @@ class Groups with _$Groups {
     String? picture,
     bool? isProject,
     String? description,
-    List<UserGroup>? members,
+    List<User>? members,
     bool? creator
   }) = _Groups;
 

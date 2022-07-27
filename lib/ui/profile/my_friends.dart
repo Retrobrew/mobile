@@ -13,14 +13,14 @@ class MyFriends extends StatelessWidget {
     if (profile.picture == null) {
       return TextAvatar(
         shape: Shape.Circular,
-        fontSize: 25,
+        fontSize: 45,
         numberLetters: 2,
         text: profile.username,
       );
     }
 
     return CircleAvatar(
-        radius: 25,
+        radius: 45,
         backgroundImage: NetworkImage(
             "https://api.retrobrew.fr/users/${profile.uuid}/avatar")
       );
@@ -50,9 +50,6 @@ class MyFriends extends StatelessWidget {
                 child: _avatar(),
               ),
               Text(profile.username),
-              Text(profile.country ?? "Retroland"),
-              Text(profile.sex ?? "Demiboy"),
-              _removeButton(),
             ],
           ),
         ));

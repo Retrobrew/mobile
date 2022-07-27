@@ -16,6 +16,7 @@ _$_Authentication _$$_AuthenticationFromJson(Map<String, dynamic> json) =>
       country: json['country'],
       uuid: json['uuid'],
       access_token: json['access_token'] as String?,
+      picture: json['picture'] as String?,
     );
 
 Map<String, dynamic> _$$_AuthenticationToJson(_$_Authentication instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$_AuthenticationToJson(_$_Authentication instance) =>
       'country': instance.country,
       'uuid': instance.uuid,
       'access_token': instance.access_token,
+      'picture': instance.picture,
     };
