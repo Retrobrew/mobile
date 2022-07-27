@@ -30,7 +30,7 @@ class _UserApiProvider implements UserApiProvider {
                 method: 'POST',
                 headers: _headers,
                 extra: _extra,
-                contentType: 'application/x-www-form-urlencoded')
+                contentType: 'application/json')
             .compose(_dio.options, '/',
                 queryParameters: queryParameters, data: _data)
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));

@@ -245,8 +245,8 @@ class _SignupState extends State<Signup> {
                     controller: controllers["country"]!,
                       type: Type.search,
                       suggestions: COUNTRY_NAME,
-                      name: Field.confirmpassword,
-                      text: 'COUNTRY',
+                      name: Field.country,
+                      text: 'Country',
                       password: true,
                       icon: Icons.flag_outlined),
                   RoundedTextField(
